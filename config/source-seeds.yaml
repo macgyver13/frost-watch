@@ -1,0 +1,73 @@
+project_name: FROST Watch
+scope_note: >-
+  Public-source activity tracking for FROST and directly related dependencies.
+  Inclusion is not endorsement, technical review, security assessment,
+  production-readiness judgment, or a canonical roadmap.
+
+seeded_sources:
+  docs_pages:
+    - id: frost-zfnd
+      name: FROST reference
+      url: https://frost.zfnd.org/index.html
+      project: Zcash Foundation FROST
+      tags: [frost, spec, reference]
+    - id: blockchain-commons-frost
+      name: Blockchain Commons FROST developer page
+      url: https://developer.blockchaincommons.com/frost/
+      project: Blockchain Commons
+      tags: [frost, docs, implementation, education]
+    - id: schnorr-fun-frost-docs
+      name: schnorr_fun FROST docs
+      url: https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html
+      project: schnorr_fun
+      tags: [frost, rust, docs, implementation]
+    - id: frostsnap-comparison
+      name: Frostsnap comparison
+      url: https://frostsnap.com/docs/comparison/
+      project: Frostsnap
+      tags: [frost, hardware, docs]
+    - id: skeptrune-dkg-production
+      name: Taking DKG from papers to production
+      url: https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/
+      project: Skeptrune
+      tags: [frost, dkg, blog]
+  github_repositories:
+    - id: zcashfoundation-frost
+      repo: ZcashFoundation/frost
+      project: Zcash Foundation FROST
+      tags: [frost, implementation, rust]
+    - id: frostsnap-frostsnap
+      repo: frostsnap/frostsnap
+      project: Frostsnap
+      tags: [frost, hardware, implementation, taproot]
+    - id: blockstreamresearch-secp256k1-zkp
+      repo: BlockstreamResearch/secp256k1-zkp
+      project: secp256k1-zkp
+      tags: [frost, secp256k1, bitcoin, implementation]
+    - id: blockstreamresearch-bip-frost-dkg
+      repo: BlockstreamResearch/bip-frost-dkg
+      project: ChillDKG / BIP FROST DKG
+      tags: [frost, chilldkg, dkg, spec, bitcoin]
+    - id: cmdruid-frost
+      repo: cmdruid/frost
+      project: cmdruid/frost
+      tags: [frost, implementation]
+  github_pull_requests:
+    - id: secp256k1-zkp-pr-138
+      url: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138
+      project: secp256k1-zkp
+      tags: [frost, secp256k1, bitcoin, pull-request]
+    - id: secp256k1-zkp-pr-278
+      url: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278
+      project: secp256k1-zkp
+      tags: [frost, secp256k1, bitcoin, pull-request]
+    - id: zcash-frost-pr-730
+      url: https://github.com/ZcashFoundation/frost/pull/730
+      project: Zcash Foundation FROST
+      tags: [frost, pull-request, merged]
+  crates:
+    - id: frost-secp256k1-tr
+      name: frost-secp256k1-tr
+      url: https://crates.io/crates/frost-secp256k1-tr
+      project: frost-secp256k1-tr
+      tags: [frost, secp256k1, rust, package]

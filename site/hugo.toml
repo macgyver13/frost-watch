@@ -1,0 +1,12 @@
+baseURL = "https://frost-watch.pages.dev/"
+locale = "en-us"
+title = "FROST Watch"
+enableRobotsTXT = true
+
+[params]
+  description = "Public-source activity tracking for FROST and directly related dependencies."
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

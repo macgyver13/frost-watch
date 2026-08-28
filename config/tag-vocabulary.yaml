@@ -1,0 +1,49 @@
+tags:
+  - frost
+  - chilldkg
+  - dkg
+  - roast
+  - threshold-schnorr
+  - secp256k1
+  - bitcoin
+  - taproot
+  - hardware
+  - implementation
+  - spec
+  - package
+  - docs
+  - reference
+  - blog
+  - release
+  - pull-request
+  - issue
+  - discussion
+  - media
+  - rust
+  - silent-payments-overlap
+  - candidate-source
+
+event_types:
+  - source_seeded
+  - repo_activity
+  - pull_request_opened
+  - pull_request_merged
+  - issue_opened
+  - issue_closed
+  - release_published
+  - package_published
+  - docs_changed
+  - spec_changed
+  - blog_post
+  - media_item
+  - social_discussion
+  - new_project_discovered
+  - manual_drop
+
+confidence:
+  - seeded_source
+  - accepted_source
+  - exact_query_match
+  - candidate_discovery
+  - manual_seed
+  - social_candidate

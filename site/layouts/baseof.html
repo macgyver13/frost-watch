@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .Title }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="FROST Watch" href="/feed.xml">
+</head>
+<body>
+<header>
+  <h1><a href="/">FROST Watch</a></h1>
+  <nav>
+    <a href="/latest/">Latest</a> ·
+    <a href="/projects/">Projects</a> ·
+    <a href="/sources/">Sources</a> ·
+    <a href="/tags/">Tags</a> ·
+    <a href="/weeks/">Weeks</a> ·
+    <a href="/topics/frost-silent-payments/">FROST + SP</a>
+  </nav>
+  <hr>
+</header>
+<main>
+{{ block "main" . }}{{ .Content }}{{ end }}
+</main>
+<footer>
+  <hr>
+  <p><small>FROST Watch is source aggregation, not endorsement or technical review.</small></p>
+</footer>
+</body>
+</html>

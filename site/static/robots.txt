@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://frost-watch.pages.dev/sitemap.xml

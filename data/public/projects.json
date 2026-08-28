@@ -1,0 +1,148 @@
+{
+  "projects": [
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "blockchain-commons",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "Blockchain Commons",
+      "sources": [
+        "blockchain-commons-frost"
+      ],
+      "tags": [
+        "docs",
+        "education",
+        "frost",
+        "implementation"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "chilldkg-bip-frost-dkg",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "ChillDKG / BIP FROST DKG",
+      "sources": [
+        "blockstreamresearch-bip-frost-dkg"
+      ],
+      "tags": [
+        "bitcoin",
+        "chilldkg",
+        "dkg",
+        "frost",
+        "spec"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "cmdruid-frost",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "cmdruid/frost",
+      "sources": [
+        "cmdruid-frost"
+      ],
+      "tags": [
+        "frost",
+        "implementation"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "frost-secp256k1-tr",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "frost-secp256k1-tr",
+      "sources": [
+        "frost-secp256k1-tr"
+      ],
+      "tags": [
+        "frost",
+        "package",
+        "rust",
+        "secp256k1"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "frostsnap",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "Frostsnap",
+      "sources": [
+        "frostsnap-comparison",
+        "frostsnap-frostsnap"
+      ],
+      "tags": [
+        "docs",
+        "frost",
+        "hardware",
+        "implementation",
+        "taproot"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "schnorr-fun",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "schnorr_fun",
+      "sources": [
+        "schnorr-fun-frost-docs"
+      ],
+      "tags": [
+        "docs",
+        "frost",
+        "implementation",
+        "rust"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "secp256k1-zkp",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "secp256k1-zkp",
+      "sources": [
+        "blockstreamresearch-secp256k1-zkp",
+        "secp256k1-zkp-pr-138",
+        "secp256k1-zkp-pr-278"
+      ],
+      "tags": [
+        "bitcoin",
+        "frost",
+        "implementation",
+        "pull-request",
+        "secp256k1"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "skeptrune",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "Skeptrune",
+      "sources": [
+        "skeptrune-dkg-production"
+      ],
+      "tags": [
+        "blog",
+        "dkg",
+        "frost"
+      ]
+    },
+    {
+      "first_seen": "2026-08-28T00:18:44Z",
+      "id": "zcash-foundation-frost",
+      "last_observed_activity": "2026-08-28T00:18:44Z",
+      "name": "Zcash Foundation FROST",
+      "sources": [
+        "frost-zfnd",
+        "zcashfoundation-frost",
+        "zcash-frost-pr-730"
+      ],
+      "tags": [
+        "frost",
+        "implementation",
+        "merged",
+        "pull-request",
+        "reference",
+        "rust",
+        "spec"
+      ]
+    }
+  ],
+  "schema_version": "frost-watch.projects.v0"
+}

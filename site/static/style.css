@@ -1,0 +1,7 @@
+/* Basic FROST Watch static site styles */
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; max-width: 980px; margin: 0 auto; padding: 2rem; color: #17202a; background: #fbfbf8; }
+a { color: #145cc2; }
+code { background: #eef1f4; padding: .1rem .25rem; border-radius: .25rem; }
+blockquote { border-left: 4px solid #7aa2d8; margin-left: 0; padding: .4rem 1rem; background: #f1f5fb; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #dde3ea; padding: .45rem; vertical-align: top; }
