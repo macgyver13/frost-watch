@@ -199,6 +199,14 @@ def build_items(cfg: dict) -> tuple[list[dict], dict, dict]:
             })
             projects[pslug]["tags"] = sorted(set(projects[pslug]["tags"]) | set(tags))
             projects[pslug]["sources"].append(source_id)
+            projects[pslug]["latest_discovered_at"] = max(
+                projects[pslug].get("latest_discovered_at", project_discovered_at),
+                discovered_at,
+            )
+            projects[pslug]["activity_at"] = max(
+                projects[pslug].get("activity_at", item["activity_at"]),
+                item["activity_at"],
+            )
     return items, projects, sources
 
 
@@ -247,7 +255,7 @@ def main() -> int:
         "generated_at": utc_now_iso(),
         "items": items,
     }
-    projects_list = sorted(projects.values(), key=lambda x: x.get("discovered_at", ""), reverse=True)
+    projects_list = sorted(projects.values(), key=lambda x: x.get("latest_discovered_at") or x.get("discovered_at", ""), reverse=True)
     sources_list = sorted(sources.values(), key=lambda x: x["name"].lower())
     for base in (OUT, STATIC):
         write_json(base / "feed.json", feed)

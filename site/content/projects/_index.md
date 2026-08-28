@@ -7,7 +7,7 @@ title: "Project catalog"
 ## Zcash Foundation FROST
 
 Tags: `frost`, `implementation`, `merged`, `pull-request`, `reference`, `rust`, `spec`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Pull requests
 
@@ -28,7 +28,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## Blockchain Commons
 
 Tags: `docs`, `education`, `frost`, `implementation`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Docs and articles
 
@@ -39,7 +39,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## schnorr_fun
 
 Tags: `docs`, `frost`, `implementation`, `rust`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Docs and articles
 
@@ -50,7 +50,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## Frostsnap
 
 Tags: `docs`, `frost`, `hardware`, `implementation`, `taproot`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Docs and articles
 
@@ -66,7 +66,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## Skeptrune
 
 Tags: `blog`, `dkg`, `frost`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Docs and articles
 
@@ -77,7 +77,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## secp256k1-zkp
 
 Tags: `bitcoin`, `frost`, `implementation`, `pull-request`, `secp256k1`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Pull requests
 
@@ -95,7 +95,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## ChillDKG / BIP FROST DKG
 
 Tags: `bitcoin`, `chilldkg`, `dkg`, `frost`, `spec`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Repositories
 
@@ -106,7 +106,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## cmdruid/frost
 
 Tags: `frost`, `implementation`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Repositories
 
@@ -117,7 +117,7 @@ Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:2
 ## frost-secp256k1-tr
 
 Tags: `frost`, `package`, `rust`, `secp256k1`  
-Discovered: `2026-08-28T19:59:47Z` · Latest observed activity: `2026-08-28T21:28:32Z`
+Project discovered: `2026-08-28T19:59:47Z` · Latest discovered item: `2026-08-28T19:59:47Z` · Latest activity: `2026-08-28T19:59:47Z`
 
 ### Packages
 

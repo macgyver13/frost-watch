@@ -82,6 +82,43 @@ class DiscoveryDateTests(unittest.TestCase):
             finally:
                 build_seed_feed.OUT = old_out
 
+    def test_project_latest_discovered_at_tracks_newest_child_item(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                (out / "feed.json").write_text(json.dumps({
+                    "items": [{
+                        "id": "seed:old-source",
+                        "discovered_at": "2026-08-27T00:00:00Z",
+                    }]
+                }))
+                (out / "projects.json").write_text(json.dumps({"projects": []}))
+                (out / "sources.json").write_text(json.dumps({"sources": []}))
+
+                cfg = {"seeded_sources": {"docs_pages": [
+                    {
+                        "id": "old-source",
+                        "name": "Old source",
+                        "url": "https://example.com/old",
+                        "project": "Shared project",
+                        "tags": ["docs"],
+                    },
+                    {
+                        "id": "new-source",
+                        "name": "New source",
+                        "url": "https://example.com/new",
+                        "project": "Shared project",
+                        "tags": ["docs"],
+                    },
+                ]}}
+                _items, projects, _sources = build_seed_feed.build_items(cfg)
+                latest = projects["shared-project"]["latest_discovered_at"]
+                self.assertGreater(latest, "2026-08-27T00:00:00Z")
+            finally:
+                build_seed_feed.OUT = old_out
+
 
 if __name__ == "__main__":
     unittest.main()

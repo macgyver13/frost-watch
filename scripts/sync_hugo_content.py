@@ -115,7 +115,11 @@ Generated: `{now}`
     for p in projects:
         body.append(f"## {p['name']}\n")
         body.append("Tags: " + ", ".join(f"`{t}`" for t in p.get("tags", [])) + "  ")
-        body.append(f"Discovered: `{p.get('discovered_at') or p.get('first_seen', 'unknown')}` · Latest observed activity: `{p.get('last_observed_activity', 'unknown')}`\n")
+        body.append(
+            f"Project discovered: `{p.get('discovered_at') or p.get('first_seen', 'unknown')}` · "
+            f"Latest discovered item: `{p.get('latest_discovered_at') or p.get('discovered_at') or p.get('first_seen', 'unknown')}` · "
+            f"Latest activity: `{p.get('activity_at') or p.get('last_observed_activity', 'unknown')}`\n"
+        )
         grouped = defaultdict(list)
         for item in project_items.get(p["name"], []):
             grouped[item.get("source_type", "unknown")].append(item)
