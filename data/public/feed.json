@@ -1,19 +1,22 @@
 {
   "description": "Public-source activity tracking for FROST and directly related dependencies. Inclusion is not endorsement, technical review, security assessment, production-readiness judgment, or a canonical roadmap.",
-  "generated_at": "2026-08-28T19:59:47Z",
+  "generated_at": "2026-08-28T21:10:26Z",
   "items": [
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://frost.zfnd.org/index.html"
         }
       ],
       "id": "seed:frost-zfnd",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Zcash Foundation FROST",
       "source_type": "docs_page",
       "source_url": "https://frost.zfnd.org/index.html",
@@ -27,17 +30,20 @@
       "title": "FROST reference"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://developer.blockchaincommons.com/frost/"
         }
       ],
       "id": "seed:blockchain-commons-frost",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Blockchain Commons",
       "source_type": "docs_page",
       "source_url": "https://developer.blockchaincommons.com/frost/",
@@ -52,17 +58,20 @@
       "title": "Blockchain Commons FROST developer page"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html"
         }
       ],
       "id": "seed:schnorr-fun-frost-docs",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "schnorr_fun",
       "source_type": "docs_page",
       "source_url": "https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html",
@@ -77,17 +86,20 @@
       "title": "schnorr_fun FROST docs"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://frostsnap.com/docs/comparison/"
         }
       ],
       "id": "seed:frostsnap-comparison",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Frostsnap",
       "source_type": "docs_page",
       "source_url": "https://frostsnap.com/docs/comparison/",
@@ -101,17 +113,20 @@
       "title": "Frostsnap comparison"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/"
         }
       ],
       "id": "seed:skeptrune-dkg-production",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Skeptrune",
       "source_type": "docs_page",
       "source_url": "https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/",
@@ -125,17 +140,20 @@
       "title": "Taking DKG from papers to production"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/ZcashFoundation/frost"
         }
       ],
       "id": "seed:zcashfoundation-frost",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Zcash Foundation FROST",
       "source_type": "github_repository",
       "source_url": "https://github.com/ZcashFoundation/frost",
@@ -149,17 +167,20 @@
       "title": "ZcashFoundation/frost"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/frostsnap/frostsnap"
         }
       ],
       "id": "seed:frostsnap-frostsnap",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Frostsnap",
       "source_type": "github_repository",
       "source_url": "https://github.com/frostsnap/frostsnap",
@@ -174,17 +195,20 @@
       "title": "frostsnap/frostsnap"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp"
         }
       ],
       "id": "seed:blockstreamresearch-secp256k1-zkp",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "secp256k1-zkp",
       "source_type": "github_repository",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp",
@@ -199,17 +223,20 @@
       "title": "BlockstreamResearch/secp256k1-zkp"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/BlockstreamResearch/bip-frost-dkg"
         }
       ],
       "id": "seed:blockstreamresearch-bip-frost-dkg",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "ChillDKG / BIP FROST DKG",
       "source_type": "github_repository",
       "source_url": "https://github.com/BlockstreamResearch/bip-frost-dkg",
@@ -225,17 +252,20 @@
       "title": "BlockstreamResearch/bip-frost-dkg"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/cmdruid/frost"
         }
       ],
       "id": "seed:cmdruid-frost",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "cmdruid/frost",
       "source_type": "github_repository",
       "source_url": "https://github.com/cmdruid/frost",
@@ -248,17 +278,20 @@
       "title": "cmdruid/frost"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138"
         }
       ],
       "id": "seed:secp256k1-zkp-pr-138",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "secp256k1-zkp",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138",
@@ -273,17 +306,20 @@
       "title": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278"
         }
       ],
       "id": "seed:secp256k1-zkp-pr-278",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "secp256k1-zkp",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278",
@@ -298,17 +334,20 @@
       "title": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://github.com/ZcashFoundation/frost/pull/730"
         }
       ],
       "id": "seed:zcash-frost-pr-730",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "Zcash Foundation FROST",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/ZcashFoundation/frost/pull/730",
@@ -322,17 +361,20 @@
       "title": "https://github.com/ZcashFoundation/frost/pull/730"
     },
     {
+      "activity_at": "2026-08-28T19:59:47Z",
       "confidence": "seeded_source",
+      "discovered_at": "2026-08-28T19:59:47Z",
       "event_time": "2026-08-28T19:59:47Z",
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-08-28T19:59:47Z",
+          "retrieved_at": "2026-08-28T21:10:26Z",
           "url": "https://crates.io/crates/frost-secp256k1-tr"
         }
       ],
       "id": "seed:frost-secp256k1-tr",
-      "observed_at": "2026-08-28T19:59:47Z",
+      "last_seen_at": "2026-08-28T21:10:26Z",
+      "observed_at": "2026-08-28T21:10:26Z",
       "project": "frost-secp256k1-tr",
       "source_type": "package_crate",
       "source_url": "https://crates.io/crates/frost-secp256k1-tr",

@@ -33,7 +33,24 @@ def rel_static(name: str) -> str:
 
 def item_line(item: dict) -> str:
     tags = ", ".join(f"`{t}`" for t in item.get("tags", []))
-    return f"- [{item['title']}]({item['source_url']}) — {item['summary']}  \n  _Project:_ {item.get('project','')} · _Type:_ `{item.get('source_type','')}` · _Tags:_ {tags}"
+    discovered = item.get("discovered_at") or item.get("event_time") or "unknown"
+    activity = item.get("activity_at") or item.get("source_updated_at") or item.get("source_published_at") or discovered
+    return (
+        f"- [{item['title']}]({item['source_url']}) — {item['summary']}  \n"
+        f"  _Project:_ {item.get('project','')} · _Type:_ `{item.get('source_type','')}` · "
+        f"_Discovered:_ `{discovered}` · _Activity:_ `{activity}` · _Tags:_ {tags}"
+    )
+
+
+def within_days(item: dict, days: int, now: datetime) -> bool:
+    value = item.get("discovered_at") or item.get("event_time")
+    if not value:
+        return False
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    return (now - dt).days <= days
 
 
 def write(path: Path, text: str) -> None:
@@ -46,7 +63,10 @@ def main() -> int:
     projects = json.loads((STATIC / "projects.json").read_text())["projects"]
     sources = json.loads((STATIC / "sources.json").read_text())["sources"]
     items = feed["items"]
-    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    now_dt = datetime.now(timezone.utc).replace(microsecond=0)
+    now = now_dt.isoformat().replace("+00:00", "Z")
+    discovered_items = sorted(items, key=lambda i: i.get("discovered_at") or i.get("event_time") or "", reverse=True)
+    activity_items = sorted(items, key=lambda i: i.get("activity_at") or i.get("source_updated_at") or i.get("source_published_at") or i.get("event_time") or "", reverse=True)
 
     write(CONTENT / "_index.md", fm("FROST Watch") + f"""
 > {DISCLAIMER}
@@ -62,7 +82,7 @@ FROST Watch is currently bootstrapped with {len(items)} seeded monitored sources
 - [Source types](/source-types/)
 - [Weekly archive](/weeks/)
 - [Recently changed](/recently-changed/)
-- [Newly discovered repos](/newly-discovered/)
+- [Newly discovered](/newly-discovered/)
 - [Needs human source seeding](/needs-human-source-seeding/)
 - [FROST + Silent Payments overlap](/topics/frost-silent-payments/)
 
@@ -77,7 +97,7 @@ FROST Watch is currently bootstrapped with {len(items)} seeded monitored sources
 Generated: `{now}`
 """)
 
-    write(CONTENT / "latest" / "_index.md", fm("Latest activity") + "\n".join([f"> {DISCLAIMER}\n", *[item_line(i) for i in items]]) + "\n")
+    write(CONTENT / "latest" / "_index.md", fm("Latest activity") + "\n".join([f"> {DISCLAIMER}\n", *[item_line(i) for i in activity_items]]) + "\n")
 
     project_items = defaultdict(list)
     for item in items:
@@ -129,8 +149,28 @@ This bootstrap rollup is generated from the structured feed and currently contai
 """ + "\n".join(item_line(i) for i in items) + "\n")
 
     placeholder = f"> {DISCLAIMER}\n\nNo live collector events yet. This view will populate after continuous collection is enabled.\n"
-    write(CONTENT / "recently-changed" / "_index.md", fm("Recently changed") + placeholder)
-    write(CONTENT / "newly-discovered" / "_index.md", fm("Newly discovered repos") + placeholder)
+    changed_body = [
+        f"> {DISCLAIMER}\n",
+        "Activity uses the best available upstream date: source update, source publication, or Frostwatch discovery time.\n",
+        *[item_line(i) for i in activity_items],
+    ]
+    write(CONTENT / "recently-changed" / "_index.md", fm("Recently changed") + "\n".join(changed_body) + "\n")
+
+    recent_7 = [i for i in discovered_items if within_days(i, 7, now_dt)]
+    recent_30 = [i for i in discovered_items if within_days(i, 30, now_dt)]
+    discovered_body = [
+        f"> {DISCLAIMER}\n",
+        "Discovery date means the first scan where Frostwatch saw the item. It does not change on later refreshes.\n",
+        f"## Discovered in the last 7 days ({len(recent_7)})\n",
+        *[item_line(i) for i in recent_7],
+        "",
+        f"## Discovered in the last 30 days ({len(recent_30)})\n",
+        *[item_line(i) for i in recent_30],
+        "",
+        f"## All discovered items ({len(discovered_items)})\n",
+        *[item_line(i) for i in discovered_items],
+    ]
+    write(CONTENT / "newly-discovered" / "_index.md", fm("Newly discovered") + "\n".join(discovered_body) + "\n")
     write(CONTENT / "needs-human-source-seeding" / "_index.md", fm("Needs human source seeding") + placeholder)
 
     write(CONTENT / "topics" / "frost-silent-payments" / "_index.md", fm("FROST + Silent Payments overlap") + f"""
