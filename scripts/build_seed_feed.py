@@ -75,6 +75,10 @@ def source_type_for(kind: str) -> str:
 def title_for(entry: dict, kind: str) -> str:
     if "name" in entry:
         return entry["name"]
+    if kind == "github_pull_requests" and "url" in entry:
+        match = re.match(r"https://github\.com/([^/]+/[^/]+)/pull/(\d+)/?$", entry["url"])
+        if match:
+            return f"{match.group(1)} PR #{match.group(2)}"
     if "repo" in entry:
         return entry["repo"]
     return entry.get("url", entry.get("id", "Seeded source"))

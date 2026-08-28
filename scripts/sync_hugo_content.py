@@ -42,6 +42,15 @@ def item_line(item: dict) -> str:
     )
 
 
+def source_type_heading(source_type: str) -> str:
+    return {
+        "docs_page": "Docs and articles",
+        "github_repository": "Repositories",
+        "github_pull_request": "Pull requests",
+        "package_crate": "Packages",
+    }.get(source_type, source_type.replace("_", " ").title())
+
+
 def within_days(item: dict, days: int, now: datetime) -> bool:
     value = item.get("discovered_at") or item.get("event_time")
     if not value:
@@ -105,9 +114,16 @@ Generated: `{now}`
     body = [f"> {DISCLAIMER}\n"]
     for p in projects:
         body.append(f"## {p['name']}\n")
-        body.append("Tags: " + ", ".join(f"`{t}`" for t in p.get("tags", [])) + "\n")
+        body.append("Tags: " + ", ".join(f"`{t}`" for t in p.get("tags", [])) + "  ")
+        body.append(f"Discovered: `{p.get('discovered_at') or p.get('first_seen', 'unknown')}` · Latest observed activity: `{p.get('last_observed_activity', 'unknown')}`\n")
+        grouped = defaultdict(list)
         for item in project_items.get(p["name"], []):
-            body.append(item_line(item))
+            grouped[item.get("source_type", "unknown")].append(item)
+        for source_type in sorted(grouped, key=lambda st: (st != "github_pull_request", st)):
+            body.append(f"### {source_type_heading(source_type)}\n")
+            for item in grouped[source_type]:
+                body.append(item_line(item))
+            body.append("")
         body.append("")
     write(CONTENT / "projects" / "_index.md", fm("Project catalog") + "\n".join(body) + "\n")
 

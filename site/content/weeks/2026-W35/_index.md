@@ -29,11 +29,11 @@ This bootstrap rollup is generated from the structured feed and currently contai
   _Project:_ ChillDKG / BIP FROST DKG · _Type:_ `github_repository` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `chilldkg`, `dkg`, `spec`, `bitcoin`
 - [cmdruid/frost](https://github.com/cmdruid/frost) — Seeded monitored source for FROST Watch: cmdruid/frost.  
   _Project:_ cmdruid/frost · _Type:_ `github_repository` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `implementation`
-- [https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138) — Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138.  
+- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138) — Seeded monitored source for FROST Watch: BlockstreamResearch/secp256k1-zkp PR #138.  
   _Project:_ secp256k1-zkp · _Type:_ `github_pull_request` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `bitcoin`, `pull-request`
-- [https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278) — Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278.  
+- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278) — Seeded monitored source for FROST Watch: BlockstreamResearch/secp256k1-zkp PR #278.  
   _Project:_ secp256k1-zkp · _Type:_ `github_pull_request` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `bitcoin`, `pull-request`
-- [https://github.com/ZcashFoundation/frost/pull/730](https://github.com/ZcashFoundation/frost/pull/730) — Seeded monitored source for FROST Watch: https://github.com/ZcashFoundation/frost/pull/730.  
+- [ZcashFoundation/frost PR #730](https://github.com/ZcashFoundation/frost/pull/730) — Seeded monitored source for FROST Watch: ZcashFoundation/frost PR #730.  
   _Project:_ Zcash Foundation FROST · _Type:_ `github_pull_request` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `pull-request`, `merged`
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr) — Seeded monitored source for FROST Watch: frost-secp256k1-tr.  
   _Project:_ frost-secp256k1-tr · _Type:_ `package_crate` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `rust`, `package`

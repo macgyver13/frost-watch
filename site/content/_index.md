@@ -28,4 +28,4 @@ FROST Watch is currently bootstrapped with 14 seeded monitored sources. Live col
 - [projects.json](/projects.json)
 - [sources.json](/sources.json)
 
-Generated: `2026-08-28T21:10:26Z`
+Generated: `2026-08-28T21:28:32Z`

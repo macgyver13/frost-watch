@@ -3,7 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Fri, 28 Aug 2026 21:10:26 +0000</lastBuildDate>
+<lastBuildDate>Fri, 28 Aug 2026 21:28:32 +0000</lastBuildDate>
 <item>
 <title>FROST reference</title>
 <link>https://frost.zfnd.org/index.html</link>
@@ -75,24 +75,24 @@
 <pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
-<title>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138</title>
+<title>BlockstreamResearch/secp256k1-zkp PR #138</title>
 <link>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138</link>
 <guid isPermaLink="false">seed:secp256k1-zkp-pr-138</guid>
-<description>Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138.</description>
+<description>Seeded monitored source for FROST Watch: BlockstreamResearch/secp256k1-zkp PR #138.</description>
 <pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
-<title>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278</title>
+<title>BlockstreamResearch/secp256k1-zkp PR #278</title>
 <link>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278</link>
 <guid isPermaLink="false">seed:secp256k1-zkp-pr-278</guid>
-<description>Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278.</description>
+<description>Seeded monitored source for FROST Watch: BlockstreamResearch/secp256k1-zkp PR #278.</description>
 <pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
-<title>https://github.com/ZcashFoundation/frost/pull/730</title>
+<title>ZcashFoundation/frost PR #730</title>
 <link>https://github.com/ZcashFoundation/frost/pull/730</link>
 <guid isPermaLink="false">seed:zcash-frost-pr-730</guid>
-<description>Seeded monitored source for FROST Watch: https://github.com/ZcashFoundation/frost/pull/730.</description>
+<description>Seeded monitored source for FROST Watch: ZcashFoundation/frost PR #730.</description>
 <pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
