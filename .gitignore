@@ -4,3 +4,5 @@ site/public/
 __pycache__/
 *.pyc
 .env
+
+.wrangler/
