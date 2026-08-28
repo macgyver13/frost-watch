@@ -3,103 +3,103 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Fri, 28 Aug 2026 13:58:56 +0000</lastBuildDate>
+<lastBuildDate>Fri, 28 Aug 2026 19:59:47 +0000</lastBuildDate>
 <item>
 <title>FROST reference</title>
 <link>https://frost.zfnd.org/index.html</link>
 <guid isPermaLink="false">seed:frost-zfnd</guid>
 <description>Seeded monitored source for FROST Watch: FROST reference.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>Blockchain Commons FROST developer page</title>
 <link>https://developer.blockchaincommons.com/frost/</link>
 <guid isPermaLink="false">seed:blockchain-commons-frost</guid>
 <description>Seeded monitored source for FROST Watch: Blockchain Commons FROST developer page.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>schnorr_fun FROST docs</title>
 <link>https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html</link>
 <guid isPermaLink="false">seed:schnorr-fun-frost-docs</guid>
 <description>Seeded monitored source for FROST Watch: schnorr_fun FROST docs.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>Frostsnap comparison</title>
 <link>https://frostsnap.com/docs/comparison/</link>
 <guid isPermaLink="false">seed:frostsnap-comparison</guid>
 <description>Seeded monitored source for FROST Watch: Frostsnap comparison.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>Taking DKG from papers to production</title>
 <link>https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/</link>
 <guid isPermaLink="false">seed:skeptrune-dkg-production</guid>
 <description>Seeded monitored source for FROST Watch: Taking DKG from papers to production.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>ZcashFoundation/frost</title>
 <link>https://github.com/ZcashFoundation/frost</link>
 <guid isPermaLink="false">seed:zcashfoundation-frost</guid>
 <description>Seeded monitored source for FROST Watch: ZcashFoundation/frost.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>frostsnap/frostsnap</title>
 <link>https://github.com/frostsnap/frostsnap</link>
 <guid isPermaLink="false">seed:frostsnap-frostsnap</guid>
 <description>Seeded monitored source for FROST Watch: frostsnap/frostsnap.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>BlockstreamResearch/secp256k1-zkp</title>
 <link>https://github.com/BlockstreamResearch/secp256k1-zkp</link>
 <guid isPermaLink="false">seed:blockstreamresearch-secp256k1-zkp</guid>
 <description>Seeded monitored source for FROST Watch: BlockstreamResearch/secp256k1-zkp.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>BlockstreamResearch/bip-frost-dkg</title>
 <link>https://github.com/BlockstreamResearch/bip-frost-dkg</link>
 <guid isPermaLink="false">seed:blockstreamresearch-bip-frost-dkg</guid>
 <description>Seeded monitored source for FROST Watch: BlockstreamResearch/bip-frost-dkg.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>cmdruid/frost</title>
 <link>https://github.com/cmdruid/frost</link>
 <guid isPermaLink="false">seed:cmdruid-frost</guid>
 <description>Seeded monitored source for FROST Watch: cmdruid/frost.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138</title>
 <link>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138</link>
 <guid isPermaLink="false">seed:secp256k1-zkp-pr-138</guid>
 <description>Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278</title>
 <link>https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278</link>
 <guid isPermaLink="false">seed:secp256k1-zkp-pr-278</guid>
 <description>Seeded monitored source for FROST Watch: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>https://github.com/ZcashFoundation/frost/pull/730</title>
 <link>https://github.com/ZcashFoundation/frost/pull/730</link>
 <guid isPermaLink="false">seed:zcash-frost-pr-730</guid>
 <description>Seeded monitored source for FROST Watch: https://github.com/ZcashFoundation/frost/pull/730.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 <item>
 <title>frost-secp256k1-tr</title>
 <link>https://crates.io/crates/frost-secp256k1-tr</link>
 <guid isPermaLink="false">seed:frost-secp256k1-tr</guid>
 <description>Seeded monitored source for FROST Watch: frost-secp256k1-tr.</description>
-<pubDate>Fri, 28 Aug 2026 13:58:56 +0000</pubDate>
+<pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
 </item>
 </channel></rss>
