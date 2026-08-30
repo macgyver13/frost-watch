@@ -7,7 +7,7 @@ title: "FROST Watch"
 
 ## Latest activity
 
-FROST Watch is currently bootstrapped with 14 seeded monitored sources. Live collectors will add repository, package, docs, and discovery events to the structured feed.
+FROST Watch is currently built from seeded monitored sources plus any live collector matches captured during refresh. The structured feed can now include seeded sources and discovered GitHub repository candidates.
 
 - [Latest activity](/latest/)
 - [Projects](/projects/)
@@ -28,4 +28,4 @@ FROST Watch is currently bootstrapped with 14 seeded monitored sources. Live col
 - [projects.json](/projects.json)
 - [sources.json](/sources.json)
 
-Generated: `2026-08-30T20:06:28Z`
+Generated: `2026-08-30T21:58:42Z`

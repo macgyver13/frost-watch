@@ -26,6 +26,11 @@ python3 scripts/sync_hugo_content.py
 python3 scripts/verify_public_artifacts.py
 ```
 
+`config/source-seeds.yaml` also supports live GitHub repository discovery under
+`live_collectors.github_repository_searches`. Each collector runs a GitHub
+repository search during refresh and emits candidate `source_discovered` items
+into the structured feed alongside the static seeded sources.
+
 Build the site:
 
 ```bash

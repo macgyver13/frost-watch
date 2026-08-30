@@ -5,7 +5,7 @@ title: "FROST Watch weekly rollup 2026-W35"
 
 > FROST Watch aggregates public-source activity related to FROST and directly related dependencies. Inclusion means only that a source matched the monitoring criteria. This site does not provide technical review, endorsement, security assessment, production-readiness judgment, or a canonical roadmap.
 
-This bootstrap rollup is generated from the structured feed and currently contains seeded monitored sources. Future weekly rollups will summarize repository activity, package/docs changes, accepted sources, and candidate discoveries from the same feed.
+This rollup is generated from the structured feed and can contain both seeded monitored sources and live-discovered candidates. Weekly rollups summarize repository activity, package/docs changes, accepted sources, and candidate discoveries from the same feed.
 
 ## Seeded activity
 

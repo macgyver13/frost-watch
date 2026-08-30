@@ -9,16 +9,20 @@ sources, and projects.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
 from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config" / "source-seeds.yaml"
 OUT = ROOT / "data" / "public"
 STATIC = ROOT / "site" / "static"
+GITHUB_SEARCH_API = "https://api.github.com/search/repositories"
 
 
 def utc_now_iso() -> str:
@@ -84,6 +88,207 @@ def title_for(entry: dict, kind: str) -> str:
     return entry.get("url", entry.get("id", "Seeded source"))
 
 
+def github_headers() -> dict[str, str]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "frost-watch-live-collector",
+    }
+    token = (
+        os.environ.get("FROST_WATCH_GITHUB_TOKEN")
+        or os.environ.get("GITHUB_TOKEN")
+        or os.environ.get("GH_TOKEN")
+    )
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
+
+
+def search_github_repositories(query: str, max_results: int = 10) -> list[dict]:
+    params = urlencode({"q": query, "per_page": max(1, min(int(max_results), 25)), "sort": "updated", "order": "desc"})
+    request = Request(f"{GITHUB_SEARCH_API}?{params}", headers=github_headers())
+    try:
+        with urlopen(request, timeout=30) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except Exception as exc:
+        print(f"warning: GitHub repository search failed for query {query!r}: {exc}", file=sys.stderr)
+        return []
+    return payload.get("items", [])
+
+
+def repo_excluded_by_query_terms(repo: dict, query: str) -> bool:
+    negative_terms = [term.lower() for term in re.findall(r"(?<!\S)-([a-zA-Z0-9_]+)", query)]
+    if not negative_terms:
+        return False
+    haystack_parts = [
+        str(repo.get("full_name", "")),
+        str(repo.get("description", "")),
+        " ".join(str(topic) for topic in repo.get("topics", [])),
+    ]
+    haystack = " ".join(haystack_parts).lower()
+    return any(term in haystack for term in negative_terms)
+
+
+def append_or_replace_project(projects: dict[str, dict], project: dict) -> None:
+    current = projects.setdefault(project["id"], project)
+    if current is not project:
+        current["tags"] = sorted(set(current.get("tags", [])) | set(project.get("tags", [])))
+        current["sources"] = sorted(set(current.get("sources", [])) | set(project.get("sources", [])))
+        current["latest_discovered_at"] = max(
+            current.get("latest_discovered_at", current.get("discovered_at", "")),
+            project.get("latest_discovered_at", project.get("discovered_at", "")),
+        )
+        current["activity_at"] = max(current.get("activity_at", ""), project.get("activity_at", ""))
+        current["last_observed_activity"] = max(
+            current.get("last_observed_activity", ""),
+            project.get("last_observed_activity", ""),
+        )
+
+
+def build_seeded_item(
+    entry: dict,
+    kind: str,
+    observed_at: str,
+    existing_items: dict[str, dict],
+    existing_projects: dict[str, dict],
+    existing_sources: dict[str, dict],
+) -> tuple[dict, dict, dict]:
+    url = source_url_for(entry, kind)
+    source_id = entry.get("id") or slugify(url)
+    project = entry.get("project") or entry.get("repo") or entry.get("name") or source_id
+    tags = list(dict.fromkeys(["frost", *entry.get("tags", [])]))
+    source_type = source_type_for(kind)
+    item_id = f"seed:{source_id}"
+    old_item = existing_items.get(item_id, {})
+    discovered_at = discovery_time(old_item, observed_at)
+    item = {
+        "id": item_id,
+        "title": title_for(entry, kind),
+        "summary": f"Seeded monitored source for FROST Watch: {title_for(entry, kind)}.",
+        "source_url": url,
+        "source_type": source_type,
+        "event_type": "source_seeded",
+        "project": project,
+        "tags": tags,
+        "status": "seeded",
+        "discovered_at": discovered_at,
+        "event_time": discovered_at,
+        "activity_at": item_activity_at({**old_item, "event_time": discovered_at}),
+        "observed_at": observed_at,
+        "last_seen_at": observed_at,
+        "confidence": "seeded_source",
+        "evidence": [{"url": url, "retrieved_at": observed_at}],
+    }
+
+    old_source = existing_sources.get(source_id, {})
+    source_discovered_at = discovery_time(old_source, observed_at)
+    source = {
+        "id": source_id,
+        "name": title_for(entry, kind),
+        "url": url,
+        "source_type": source_type,
+        "project": project,
+        "tags": tags,
+        "confidence": "seeded_source",
+        "discovered_at": source_discovered_at,
+        "first_seen": source_discovered_at,
+        "last_checked": observed_at,
+    }
+
+    pslug = slugify(project)
+    old_project = existing_projects.get(pslug, {})
+    project_discovered_at = discovery_time(old_project, observed_at)
+    project_record = {
+        "id": pslug,
+        "name": project,
+        "tags": sorted(set(tags)),
+        "sources": [source_id],
+        "discovered_at": project_discovered_at,
+        "first_seen": project_discovered_at,
+        "activity_at": max(old_project.get("activity_at") or old_project.get("last_observed_activity") or observed_at, item["activity_at"]),
+        "last_observed_activity": observed_at,
+        "latest_discovered_at": max(old_project.get("latest_discovered_at", project_discovered_at), discovered_at),
+    }
+    return item, source, project_record
+
+
+def build_github_repo_item(
+    collector: dict,
+    repo: dict,
+    observed_at: str,
+    existing_items: dict[str, dict],
+    existing_projects: dict[str, dict],
+    existing_sources: dict[str, dict],
+) -> tuple[dict, dict, dict]:
+    full_name = repo["full_name"]
+    project = collector.get("project") or full_name
+    repo_slug = slugify(full_name)
+    source_id = f"gh-search:{collector['id']}:{repo_slug}"
+    old_item = existing_items.get(source_id, {})
+    discovered_at = discovery_time(old_item, observed_at)
+    topics = [str(topic) for topic in repo.get("topics", [])]
+    tags = list(dict.fromkeys(["frost", *collector.get("tags", []), *topics]))
+    summary = repo.get("description") or f"GitHub repository matched Frostwatch live collector query: {collector['query']}."
+    activity_at = (
+        repo.get("pushed_at")
+        or repo.get("updated_at")
+        or repo.get("created_at")
+        or discovered_at
+    )
+    item = {
+        "id": source_id,
+        "title": full_name,
+        "summary": summary,
+        "source_url": repo["html_url"],
+        "source_type": "github_repository",
+        "event_type": "source_discovered",
+        "project": project,
+        "tags": tags,
+        "status": "candidate",
+        "discovered_at": discovered_at,
+        "event_time": discovered_at,
+        "activity_at": activity_at,
+        "observed_at": observed_at,
+        "last_seen_at": observed_at,
+        "confidence": "github_search",
+        "evidence": [{
+            "url": repo["html_url"],
+            "retrieved_at": observed_at,
+            "query": collector["query"],
+        }],
+    }
+
+    old_source = existing_sources.get(source_id, {})
+    source_discovered_at = discovery_time(old_source, observed_at)
+    source = {
+        "id": source_id,
+        "name": full_name,
+        "url": repo["html_url"],
+        "source_type": "github_repository",
+        "project": project,
+        "tags": tags,
+        "confidence": "github_search",
+        "discovered_at": source_discovered_at,
+        "first_seen": source_discovered_at,
+        "last_checked": observed_at,
+    }
+
+    pslug = slugify(project)
+    old_project = existing_projects.get(pslug, {})
+    project_discovered_at = discovery_time(old_project, observed_at)
+    project_record = {
+        "id": pslug,
+        "name": project,
+        "tags": sorted(set(tags)),
+        "sources": [source_id],
+        "discovered_at": project_discovered_at,
+        "first_seen": project_discovered_at,
+        "activity_at": max(old_project.get("activity_at") or old_project.get("last_observed_activity") or activity_at, activity_at),
+        "last_observed_activity": observed_at,
+        "latest_discovered_at": max(old_project.get("latest_discovered_at", project_discovered_at), discovered_at),
+    }
+    return item, source, project_record
+
+
 def load_existing_artifacts() -> tuple[dict[str, dict], dict[str, dict], dict[str, dict]]:
     """Load previous static artifacts so discovery dates do not refresh each run."""
     existing_items: dict[str, dict] = {}
@@ -133,7 +338,7 @@ def item_activity_at(item: dict) -> str:
     )
 
 
-def build_items(cfg: dict) -> tuple[list[dict], dict, dict]:
+def build_items(cfg: dict, github_repo_fetcher=None) -> tuple[list[dict], dict, dict]:
     observed_at = utc_now_iso()
     existing_items, existing_projects, existing_sources = load_existing_artifacts()
     sources: dict[str, dict] = {}
@@ -141,72 +346,43 @@ def build_items(cfg: dict) -> tuple[list[dict], dict, dict]:
     items: list[dict] = []
     for kind, entries in cfg.get("seeded_sources", {}).items():
         for entry in entries or []:
-            url = source_url_for(entry, kind)
-            source_id = entry.get("id") or slugify(url)
-            project = entry.get("project") or entry.get("repo") or entry.get("name") or source_id
-            tags = list(dict.fromkeys(["frost", *entry.get("tags", [])]))
-            source_type = source_type_for(kind)
-            item_id = f"seed:{source_id}"
-            old_item = existing_items.get(item_id, {})
-            discovered_at = discovery_time(old_item, observed_at)
-            item = {
-                "id": item_id,
-                "title": title_for(entry, kind),
-                "summary": f"Seeded monitored source for FROST Watch: {title_for(entry, kind)}.",
-                "source_url": url,
-                "source_type": source_type,
-                "event_type": "source_seeded",
-                "project": project,
-                "tags": tags,
-                "status": "seeded",
-                "discovered_at": discovered_at,
-                "event_time": discovered_at,
-                "activity_at": item_activity_at({**old_item, "event_time": discovered_at}),
-                "observed_at": observed_at,
-                "last_seen_at": observed_at,
-                "confidence": "seeded_source",
-                "evidence": [{"url": url, "retrieved_at": observed_at}],
-            }
+            item, source, project = build_seeded_item(
+                entry,
+                kind,
+                observed_at,
+                existing_items,
+                existing_projects,
+                existing_sources,
+            )
             items.append(item)
+            sources[source["id"]] = source
+            append_or_replace_project(projects, project)
 
-            old_source = existing_sources.get(source_id, {})
-            source_discovered_at = discovery_time(old_source, observed_at)
-            sources[source_id] = {
-                "id": source_id,
-                "name": title_for(entry, kind),
-                "url": url,
-                "source_type": source_type,
-                "project": project,
-                "tags": tags,
-                "confidence": "seeded_source",
-                "discovered_at": source_discovered_at,
-                "first_seen": source_discovered_at,
-                "last_checked": observed_at,
-            }
-
-            pslug = slugify(project)
-            old_project = existing_projects.get(pslug, {})
-            project_discovered_at = discovery_time(old_project, observed_at)
-            projects.setdefault(pslug, {
-                "id": pslug,
-                "name": project,
-                "tags": [],
-                "sources": [],
-                "discovered_at": project_discovered_at,
-                "first_seen": project_discovered_at,
-                "activity_at": old_project.get("activity_at") or old_project.get("last_observed_activity") or observed_at,
-                "last_observed_activity": observed_at,
-            })
-            projects[pslug]["tags"] = sorted(set(projects[pslug]["tags"]) | set(tags))
-            projects[pslug]["sources"].append(source_id)
-            projects[pslug]["latest_discovered_at"] = max(
-                projects[pslug].get("latest_discovered_at", project_discovered_at),
-                discovered_at,
+    for collector in cfg.get("live_collectors", {}).get("github_repository_searches", []) or []:
+        query = collector.get("query", "").strip()
+        collector_id = collector.get("id", "").strip()
+        if not query or not collector_id:
+            continue
+        if github_repo_fetcher is None:
+            results = search_github_repositories(query, collector.get("max_results", 10))
+        else:
+            results = github_repo_fetcher(query)
+        for repo in results:
+            if not repo.get("full_name") or not repo.get("html_url"):
+                continue
+            if repo_excluded_by_query_terms(repo, query):
+                continue
+            item, source, project = build_github_repo_item(
+                collector,
+                repo,
+                observed_at,
+                existing_items,
+                existing_projects,
+                existing_sources,
             )
-            projects[pslug]["activity_at"] = max(
-                projects[pslug].get("activity_at", item["activity_at"]),
-                item["activity_at"],
-            )
+            items.append(item)
+            sources[source["id"]] = source
+            append_or_replace_project(projects, project)
     return items, projects, sources
 
 
@@ -263,7 +439,7 @@ def main() -> int:
         write_json(base / "sources.json", {"schema_version": "frost-watch.sources.v0", "sources": sources_list})
         (base / "items.jsonl").write_text("".join(json.dumps(i, sort_keys=True) + "\n" for i in items))
         write_rss(base / "feed.xml", items)
-    print(f"wrote {len(items)} seed items, {len(projects_list)} projects, {len(sources_list)} sources")
+    print(f"wrote {len(items)} feed items, {len(projects_list)} projects, {len(sources_list)} sources")
     return 0
 
 

@@ -71,3 +71,14 @@ seeded_sources:
       url: https://crates.io/crates/frost-secp256k1-tr
       project: frost-secp256k1-tr
       tags: [frost, secp256k1, rust, package]
+
+live_collectors:
+  github_repository_searches:
+    - id: github-frost-repo-discovery
+      query: 'FROST "threshold signature" dkg archived:false -ethereum'
+      max_results: 10
+      tags: [frost, github, candidate, repository-discovery]
+    - id: github-chilldkg-repo-discovery
+      query: 'FROST "threshold signature" dkg chilldkg archived:false -ethereum'
+      max_results: 10
+      tags: [frost, github, candidate, repository-discovery, chilldkg]

@@ -82,7 +82,7 @@ def main() -> int:
 
 ## Latest activity
 
-FROST Watch is currently bootstrapped with {len(items)} seeded monitored sources. Live collectors will add repository, package, docs, and discovery events to the structured feed.
+FROST Watch is currently built from seeded monitored sources plus any live collector matches captured during refresh. The structured feed can now include seeded sources and discovered GitHub repository candidates.
 
 - [Latest activity](/latest/)
 - [Projects](/projects/)
@@ -162,7 +162,7 @@ Generated: `{now}`
     write(week_dir / "_index.md", fm(f"FROST Watch weekly rollup {week}") + f"""
 > {DISCLAIMER}
 
-This bootstrap rollup is generated from the structured feed and currently contains seeded monitored sources. Future weekly rollups will summarize repository activity, package/docs changes, accepted sources, and candidate discoveries from the same feed.
+This rollup is generated from the structured feed and can contain both seeded monitored sources and live-discovered candidates. Weekly rollups summarize repository activity, package/docs changes, accepted sources, and candidate discoveries from the same feed.
 
 ## Seeded activity
 
