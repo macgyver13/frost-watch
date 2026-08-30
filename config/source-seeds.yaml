@@ -75,10 +75,10 @@ seeded_sources:
 live_collectors:
   github_repository_searches:
     - id: github-frost-repo-discovery
-      query: 'FROST "threshold signature" dkg archived:false -ethereum'
+      query: 'FROST archived:false'
       max_results: 10
       tags: [frost, github, candidate, repository-discovery]
     - id: github-chilldkg-repo-discovery
-      query: 'FROST "threshold signature" dkg chilldkg archived:false -ethereum'
+      query: 'chilldkg archived:false'
       max_results: 10
       tags: [frost, github, candidate, repository-discovery, chilldkg]

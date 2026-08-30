@@ -28,6 +28,10 @@ title: "By source type"
 
 ## `github_repository`
 
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) — Seeded monitored source for FROST Watch: ZcashFoundation/frost.  
   _Project:_ Zcash Foundation FROST · _Type:_ `github_repository` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `implementation`, `rust`
 - [frostsnap/frostsnap](https://github.com/frostsnap/frostsnap) — Seeded monitored source for FROST Watch: frostsnap/frostsnap.  

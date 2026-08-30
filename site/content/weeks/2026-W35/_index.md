@@ -9,6 +9,10 @@ This rollup is generated from the structured feed and can contain both seeded mo
 
 ## Seeded activity
 
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
 - [FROST reference](https://frost.zfnd.org/index.html) — Seeded monitored source for FROST Watch: FROST reference.  
   _Project:_ Zcash Foundation FROST · _Type:_ `docs_page` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `spec`, `reference`
 - [Blockchain Commons FROST developer page](https://developer.blockchaincommons.com/frost/) — Seeded monitored source for FROST Watch: Blockchain Commons FROST developer page.  

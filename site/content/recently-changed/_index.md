@@ -34,3 +34,7 @@ Activity uses the best available upstream date: source update, source publicatio
   _Project:_ Zcash Foundation FROST · _Type:_ `github_pull_request` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `pull-request`, `merged`
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr) — Seeded monitored source for FROST Watch: frost-secp256k1-tr.  
   _Project:_ frost-secp256k1-tr · _Type:_ `package_crate` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `rust`, `package`
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`

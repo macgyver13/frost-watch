@@ -6,8 +6,12 @@ title: "Newly discovered"
 
 Discovery date means the first scan where Frostwatch saw the item. It does not change on later refreshes.
 
-## Discovered in the last 7 days (14)
+## Discovered in the last 7 days (16)
 
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
 - [FROST reference](https://frost.zfnd.org/index.html) — Seeded monitored source for FROST Watch: FROST reference.  
   _Project:_ Zcash Foundation FROST · _Type:_ `docs_page` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `spec`, `reference`
 - [Blockchain Commons FROST developer page](https://developer.blockchaincommons.com/frost/) — Seeded monitored source for FROST Watch: Blockchain Commons FROST developer page.  
@@ -37,8 +41,12 @@ Discovery date means the first scan where Frostwatch saw the item. It does not c
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr) — Seeded monitored source for FROST Watch: frost-secp256k1-tr.  
   _Project:_ frost-secp256k1-tr · _Type:_ `package_crate` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `rust`, `package`
 
-## Discovered in the last 30 days (14)
+## Discovered in the last 30 days (16)
 
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
 - [FROST reference](https://frost.zfnd.org/index.html) — Seeded monitored source for FROST Watch: FROST reference.  
   _Project:_ Zcash Foundation FROST · _Type:_ `docs_page` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `spec`, `reference`
 - [Blockchain Commons FROST developer page](https://developer.blockchaincommons.com/frost/) — Seeded monitored source for FROST Watch: Blockchain Commons FROST developer page.  
@@ -68,8 +76,12 @@ Discovery date means the first scan where Frostwatch saw the item. It does not c
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr) — Seeded monitored source for FROST Watch: frost-secp256k1-tr.  
   _Project:_ frost-secp256k1-tr · _Type:_ `package_crate` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `secp256k1`, `rust`, `package`
 
-## All discovered items (14)
+## All discovered items (16)
 
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
 - [FROST reference](https://frost.zfnd.org/index.html) — Seeded monitored source for FROST Watch: FROST reference.  
   _Project:_ Zcash Foundation FROST · _Type:_ `docs_page` · _Discovered:_ `2026-08-28T19:59:47Z` · _Activity:_ `2026-08-28T19:59:47Z` · _Tags:_ `frost`, `spec`, `reference`
 - [Blockchain Commons FROST developer page](https://developer.blockchaincommons.com/frost/) — Seeded monitored source for FROST Watch: Blockchain Commons FROST developer page.  

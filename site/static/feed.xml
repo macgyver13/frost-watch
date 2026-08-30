@@ -3,7 +3,21 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Sun, 30 Aug 2026 21:58:42 +0000</lastBuildDate>
+<lastBuildDate>Sun, 30 Aug 2026 22:12:24 +0000</lastBuildDate>
+<item>
+<title>olegfomenko/chilldkg</title>
+<link>https://github.com/olegfomenko/chilldkg</link>
+<guid isPermaLink="false">gh-search:github-chilldkg-repo-discovery:olegfomenko-chilldkg</guid>
+<description>FROST DKG BIP Implementation</description>
+<pubDate>Sun, 30 Aug 2026 22:10:26 +0000</pubDate>
+</item>
+<item>
+<title>Onyekachukwu-Nweke/bitcoin-frost-wallet</title>
+<link>https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet</link>
+<guid isPermaLink="false">gh-search:github-chilldkg-repo-discovery:onyekachukwu-nweke-bitcoin-frost-wallet</guid>
+<description>A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust</description>
+<pubDate>Sun, 30 Aug 2026 22:10:26 +0000</pubDate>
+</item>
 <item>
 <title>FROST reference</title>
 <link>https://frost.zfnd.org/index.html</link>

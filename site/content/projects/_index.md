@@ -4,6 +4,28 @@ title: "Project catalog"
 
 > FROST Watch aggregates public-source activity related to FROST and directly related dependencies. Inclusion means only that a source matched the monitoring criteria. This site does not provide technical review, endorsement, security assessment, production-readiness judgment, or a canonical roadmap.
 
+## olegfomenko/chilldkg
+
+Tags: `candidate`, `chilldkg`, `frost`, `github`, `repository-discovery`, `schnorr`, `threshold-signatures`  
+Project discovered: `2026-08-30T22:10:26Z` · Latest discovered item: `2026-08-30T22:10:26Z` · Latest activity: `2026-08-27T11:40:42Z`
+
+### Repositories
+
+- [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) — FROST DKG BIP Implementation  
+  _Project:_ olegfomenko/chilldkg · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2026-08-27T11:40:42Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`, `schnorr`, `threshold-signatures`
+
+
+## Onyekachukwu-Nweke/bitcoin-frost-wallet
+
+Tags: `candidate`, `chilldkg`, `frost`, `github`, `repository-discovery`  
+Project discovered: `2026-08-30T22:10:26Z` · Latest discovered item: `2026-08-30T22:10:26Z` · Latest activity: `2025-03-20T13:36:03Z`
+
+### Repositories
+
+- [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) — A high-performance, secure implementation of FROST (Flexible Round-Optimized Schnorr Threshold) signatures with ChillDKG for Bitcoin wallets in Rust  
+  _Project:_ Onyekachukwu-Nweke/bitcoin-frost-wallet · _Type:_ `github_repository` · _Discovered:_ `2026-08-30T22:10:26Z` · _Activity:_ `2025-03-20T13:36:03Z` · _Tags:_ `frost`, `github`, `candidate`, `repository-discovery`, `chilldkg`
+
+
 ## Zcash Foundation FROST
 
 Tags: `frost`, `implementation`, `merged`, `pull-request`, `reference`, `rust`, `spec`  

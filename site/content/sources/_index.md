@@ -16,6 +16,8 @@ title: "Source coverage"
 | [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr) | `package_crate` | frost-secp256k1-tr | `frost` `secp256k1` `rust` `package` |
 | [Frostsnap comparison](https://frostsnap.com/docs/comparison/) | `docs_page` | Frostsnap | `frost` `hardware` `docs` |
 | [frostsnap/frostsnap](https://github.com/frostsnap/frostsnap) | `github_repository` | Frostsnap | `frost` `hardware` `implementation` `taproot` |
+| [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg) | `github_repository` | olegfomenko/chilldkg | `frost` `github` `candidate` `repository-discovery` `chilldkg` `schnorr` `threshold-signatures` |
+| [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet) | `github_repository` | Onyekachukwu-Nweke/bitcoin-frost-wallet | `frost` `github` `candidate` `repository-discovery` `chilldkg` |
 | [schnorr_fun FROST docs](https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html) | `docs_page` | schnorr_fun | `frost` `rust` `docs` `implementation` |
 | [Taking DKG from papers to production](https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/) | `docs_page` | Skeptrune | `frost` `dkg` `blog` |
 | [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) | `github_repository` | Zcash Foundation FROST | `frost` `implementation` `rust` |

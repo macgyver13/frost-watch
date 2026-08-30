@@ -128,6 +128,34 @@ def repo_excluded_by_query_terms(repo: dict, query: str) -> bool:
     return any(term in haystack for term in negative_terms)
 
 
+def repo_matches_relevance_rules(repo: dict) -> bool:
+    content_parts = [
+        str(repo.get("description", "")),
+        " ".join(str(topic) for topic in repo.get("topics", [])),
+    ]
+    haystack = " ".join(content_parts).lower()
+    if not haystack.strip():
+        return False
+    if "chilldkg" in haystack:
+        return True
+    if "frost" not in haystack:
+        return False
+    context_terms = (
+        "threshold",
+        "threshold-signatures",
+        "dkg",
+        "zcash",
+        "taproot",
+        "multisig",
+        "cryptograph",
+        "mpc",
+        "secp256k1",
+        "schnorr",
+        "tss",
+    )
+    return any(term in haystack for term in context_terms)
+
+
 def append_or_replace_project(projects: dict[str, dict], project: dict) -> None:
     current = projects.setdefault(project["id"], project)
     if current is not project:
@@ -371,6 +399,8 @@ def build_items(cfg: dict, github_repo_fetcher=None) -> tuple[list[dict], dict, 
             if not repo.get("full_name") or not repo.get("html_url"):
                 continue
             if repo_excluded_by_query_terms(repo, query):
+                continue
+            if not repo_matches_relevance_rules(repo):
                 continue
             item, source, project = build_github_repo_item(
                 collector,

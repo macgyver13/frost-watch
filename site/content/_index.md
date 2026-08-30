@@ -28,4 +28,4 @@ FROST Watch is currently built from seeded monitored sources plus any live colle
 - [projects.json](/projects.json)
 - [sources.json](/sources.json)
 
-Generated: `2026-08-30T21:58:42Z`
+Generated: `2026-08-30T22:12:24Z`
