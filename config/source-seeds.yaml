@@ -11,66 +11,94 @@ seeded_sources:
       url: https://frost.zfnd.org/index.html
       project: Zcash Foundation FROST
       tags: [frost, spec, reference]
+      summary: >-
+        Zcash Foundation FROST book: protocol, ciphersuites, and library usage.
     - id: blockchain-commons-frost
       name: Blockchain Commons FROST developer page
       url: https://developer.blockchaincommons.com/frost/
       project: Blockchain Commons
       tags: [frost, docs, implementation, education]
+      summary: >-
+        Developer page covering FROST implementations, education, and Gordian stack notes.
     - id: schnorr-fun-frost-docs
       name: schnorr_fun FROST docs
       url: https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html
       project: schnorr_fun
       tags: [frost, rust, docs, implementation]
+      summary: >-
+        FROST threshold signing module in the schnorr_fun Rust crate.
     - id: frostsnap-comparison
       name: Frostsnap comparison
       url: https://frostsnap.com/docs/comparison/
       project: Frostsnap
       tags: [frost, hardware, docs]
+      summary: >-
+        How Frostsnap’s FROST hardware setup compares to other threshold arrangements.
     - id: skeptrune-dkg-production
       name: Taking DKG from papers to production
       url: https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/
       project: Skeptrune
       tags: [frost, dkg, blog]
+      summary: >-
+        On shaping FROST DKG libraries into something operators can actually run.
   github_repositories:
     - id: zcashfoundation-frost
       repo: ZcashFoundation/frost
       project: Zcash Foundation FROST
       tags: [frost, implementation, rust]
+      summary: >-
+        RFC 9591 reference implementation (ciphersuite-generic FROST in Rust).
     - id: frostsnap-frostsnap
       repo: frostsnap/frostsnap
       project: Frostsnap
       tags: [frost, hardware, implementation, taproot]
+      summary: >-
+        Hardware FROST signing with taproot; round-optimized for geographically distributed devices.
     - id: blockstreamresearch-secp256k1-zkp
       repo: BlockstreamResearch/secp256k1-zkp
       project: secp256k1-zkp
       tags: [frost, secp256k1, bitcoin, implementation]
+      summary: >-
+        libsecp256k1-zkp: experimental modules including FROST work in flight.
     - id: blockstreamresearch-bip-frost-dkg
       repo: BlockstreamResearch/bip-frost-dkg
       project: ChillDKG / BIP FROST DKG
       tags: [frost, chilldkg, dkg, spec, bitcoin]
+      summary: >-
+        ChillDKG: distributed key generation for FROST, with a Python 3.12 reference.
     - id: cmdruid-frost
       repo: cmdruid/frost
       project: cmdruid/frost
       tags: [frost, implementation]
+      summary: >-
+        Flexible, round-optimized threshold signature library for BIP340 taproot.
   github_pull_requests:
     - id: secp256k1-zkp-pr-138
       url: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138
       project: secp256k1-zkp
       tags: [frost, secp256k1, bitcoin, pull-request]
+      summary: >-
+        BIP-340 compatible FROST module for libsecp256k1-zkp. Open.
     - id: secp256k1-zkp-pr-278
       url: https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278
       project: secp256k1-zkp
       tags: [frost, secp256k1, bitcoin, pull-request]
+      summary: >-
+        FROST trusted dealer (no DKG). Implements the FROST signing BIP. Open.
     - id: zcash-frost-pr-730
       url: https://github.com/ZcashFoundation/frost/pull/730
       project: Zcash Foundation FROST
       tags: [frost, pull-request, merged]
+      summary: >-
+        Adds frost-secp256k1-tr (BIP340 / BIP341 taproot ciphersuite). Merged.
   crates:
     - id: frost-secp256k1-tr
       name: frost-secp256k1-tr
       url: https://crates.io/crates/frost-secp256k1-tr
       project: frost-secp256k1-tr
       tags: [frost, secp256k1, rust, package]
+      summary: >-
+        Schnorr / FROST over secp256k1 with BIP340 and BIP341 taproot tweaks.
 
 live_collectors:
   github_repository_searches:

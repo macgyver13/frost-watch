@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Render Hugo content pages from FROST Watch public JSON artifacts."""
+"""Render slim Hugo content pages from FROST Watch public JSON artifacts.
+
+Dashboard, atlas, week, and sources pages are hydrated client-side from
+feed.json / projects.json / sources.json. Markdown here only needs to exist
+so Hugo emits the URLs, plus week section pages so the week rail can list them.
+"""
 from __future__ import annotations
 
 import json
@@ -13,8 +18,6 @@ SITE = ROOT / "site"
 STATIC = SITE / "static"
 CONTENT = SITE / "content"
 
-DISCLAIMER = """FROST Watch aggregates public-source activity related to FROST and directly related dependencies. Inclusion means only that a source matched the monitoring criteria. This site does not provide technical review, endorsement, security assessment, production-readiness judgment, or a canonical roadmap."""
-
 
 def slugify(value: str) -> str:
     value = value.strip().lower()
@@ -27,39 +30,11 @@ def fm(title: str, extra: str = "") -> str:
     return f"---\ntitle: {json.dumps(title)}\n{extra}---\n\n"
 
 
-def rel_static(name: str) -> str:
-    return f"/{name}"
-
-
-def item_line(item: dict) -> str:
-    tags = ", ".join(f"`{t}`" for t in item.get("tags", []))
-    discovered = item.get("discovered_at") or item.get("event_time") or "unknown"
-    activity = item.get("activity_at") or item.get("source_updated_at") or item.get("source_published_at") or discovered
-    return (
-        f"- [{item['title']}]({item['source_url']}) — {item['summary']}  \n"
-        f"  _Project:_ {item.get('project','')} · _Type:_ `{item.get('source_type','')}` · "
-        f"_Discovered:_ `{discovered}` · _Activity:_ `{activity}` · _Tags:_ {tags}"
-    )
-
-
-def source_type_heading(source_type: str) -> str:
-    return {
-        "docs_page": "Docs and articles",
-        "github_repository": "Repositories",
-        "github_pull_request": "Pull requests",
-        "package_crate": "Packages",
-    }.get(source_type, source_type.replace("_", " ").title())
-
-
-def within_days(item: dict, days: int, now: datetime) -> bool:
-    value = item.get("discovered_at") or item.get("event_time")
-    if not value:
-        return False
-    try:
-        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError:
-        return False
-    return (now - dt).days <= days
+def week_title(slug: str) -> str:
+    match = re.match(r"(\d{4})-W(\d{1,2})$", slug)
+    if match:
+        return f"Week {int(match.group(2))}, {match.group(1)}"
+    return slug
 
 
 def write(path: Path, text: str) -> None:
@@ -69,147 +44,69 @@ def write(path: Path, text: str) -> None:
 
 def main() -> int:
     feed = json.loads((STATIC / "feed.json").read_text())
-    projects = json.loads((STATIC / "projects.json").read_text())["projects"]
-    sources = json.loads((STATIC / "sources.json").read_text())["sources"]
-    items = feed["items"]
-    now_dt = datetime.now(timezone.utc).replace(microsecond=0)
-    now = now_dt.isoformat().replace("+00:00", "Z")
-    discovered_items = sorted(items, key=lambda i: i.get("discovered_at") or i.get("event_time") or "", reverse=True)
-    activity_items = sorted(items, key=lambda i: i.get("activity_at") or i.get("source_updated_at") or i.get("source_published_at") or i.get("event_time") or "", reverse=True)
+    items = feed.get("items", [])
+    week = datetime.now(timezone.utc).strftime("%G-W%V")
 
-    write(CONTENT / "_index.md", fm("FROST Watch") + f"""
-> {DISCLAIMER}
+    write(CONTENT / "_index.md", fm("Activity"))
+    write(CONTENT / "projects" / "_index.md", fm("Projects"))
+    write(CONTENT / "sources" / "_index.md", fm("Sources"))
 
-## Latest activity
+    week_root = CONTENT / "weeks"
+    week_root.mkdir(parents=True, exist_ok=True)
+    write(week_root / week / "_index.md", fm(week_title(week)))
+    week_dirs = sorted((p.name for p in week_root.iterdir() if p.is_dir()), reverse=True)
+    for slug in week_dirs:
+        page = week_root / slug / "_index.md"
+        if not page.exists() or "weekly rollup" in page.read_text().lower() or page.read_text().count("\n") > 8:
+            write(page, fm(week_title(slug)))
+        else:
+            # Keep slim title pages in the Week NN, YYYY form.
+            write(page, fm(week_title(slug)))
+    write(week_root / "_index.md", fm("Weeks"))
 
-FROST Watch is currently built from seeded monitored sources plus any live collector matches captured during refresh. The structured feed can now include seeded sources and discovered GitHub repository candidates.
+    write(
+        CONTENT / "topics" / "_index.md",
+        fm("Topics") + "- [FROST + Silent Payments](/topics/frost-silent-payments/)\n",
+    )
+    write(
+        CONTENT / "topics" / "frost-silent-payments" / "_index.md",
+        fm("FROST + Silent Payments")
+        + "Working notes on the overlap between FROST and Silent Payments.\n",
+    )
 
-- [Latest activity](/latest/)
-- [Projects](/projects/)
-- [Sources](/sources/)
-- [Tags](/tags/)
-- [Source types](/source-types/)
-- [Weekly archive](/weeks/)
-- [Recently changed](/recently-changed/)
-- [Newly discovered](/newly-discovered/)
-- [Needs human source seeding](/needs-human-source-seeding/)
-- [FROST + Silent Payments overlap](/topics/frost-silent-payments/)
-
-## Machine-readable feeds
-
-- [feed.json]({rel_static('feed.json')})
-- [feed.xml]({rel_static('feed.xml')})
-- [items.jsonl]({rel_static('items.jsonl')})
-- [projects.json]({rel_static('projects.json')})
-- [sources.json]({rel_static('sources.json')})
-
-Generated: `{now}`
-""")
-
-    write(CONTENT / "latest" / "_index.md", fm("Latest activity") + "\n".join([f"> {DISCLAIMER}\n", *[item_line(i) for i in activity_items]]) + "\n")
-
-    project_items = defaultdict(list)
-    for item in items:
-        project_items[item.get("project", "Unknown")].append(item)
-    body = [f"> {DISCLAIMER}\n"]
-    for p in projects:
-        body.append(f"## {p['name']}\n")
-        body.append("Tags: " + ", ".join(f"`{t}`" for t in p.get("tags", [])) + "  ")
-        body.append(
-            f"Project discovered: `{p.get('discovered_at') or p.get('first_seen', 'unknown')}` · "
-            f"Latest discovered item: `{p.get('latest_discovered_at') or p.get('discovered_at') or p.get('first_seen', 'unknown')}` · "
-            f"Latest activity: `{p.get('activity_at') or p.get('last_observed_activity', 'unknown')}`\n"
-        )
-        grouped = defaultdict(list)
-        for item in project_items.get(p["name"], []):
-            grouped[item.get("source_type", "unknown")].append(item)
-        for source_type in sorted(grouped, key=lambda st: (st != "github_pull_request", st)):
-            body.append(f"### {source_type_heading(source_type)}\n")
-            for item in grouped[source_type]:
-                body.append(item_line(item))
-            body.append("")
-        body.append("")
-    write(CONTENT / "projects" / "_index.md", fm("Project catalog") + "\n".join(body) + "\n")
-
-    body = [f"> {DISCLAIMER}\n", "| Source | Type | Project | Tags |", "|---|---|---|---|"]
-    for s in sources:
-        body.append(f"| [{s['name']}]({s['url']}) | `{s['source_type']}` | {s['project']} | {' '.join('`'+t+'`' for t in s.get('tags', []))} |")
-    write(CONTENT / "sources" / "_index.md", fm("Source coverage") + "\n".join(body) + "\n")
-
-    by_tag = defaultdict(list)
-    by_type = defaultdict(list)
+    # Keep leftover archive URLs alive without legal blockquotes or ISO-in-code lists.
+    by_tag: dict[str, list] = defaultdict(list)
+    by_type: dict[str, list] = defaultdict(list)
     for item in items:
         by_type[item.get("source_type", "unknown")].append(item)
         for tag in item.get("tags", []):
             by_tag[tag].append(item)
-    body = [f"> {DISCLAIMER}\n"]
-    for tag in sorted(by_tag):
-        body.append(f"## `{tag}`\n")
-        for item in by_tag[tag]: body.append(item_line(item))
-        body.append("")
-    write(CONTENT / "tags" / "_index.md", fm("By tag") + "\n".join(body) + "\n")
 
-    body = [f"> {DISCLAIMER}\n"]
-    for st in sorted(by_type):
-        body.append(f"## `{st}`\n")
-        for item in by_type[st]: body.append(item_line(item))
-        body.append("")
-    write(CONTENT / "source-types" / "_index.md", fm("By source type") + "\n".join(body) + "\n")
+    def link_list(rows: list[dict]) -> str:
+        lines = []
+        for item in rows:
+            title = item.get("title") or item.get("id") or "item"
+            url = item.get("source_url") or "#"
+            lines.append(f"- [{title}]({url})")
+        return "\n".join(lines) + ("\n" if lines else "")
 
-    week = datetime.now(timezone.utc).strftime("%G-W%V")
-    week_dir = CONTENT / "weeks" / week
-    write(CONTENT / "weeks" / "_index.md", fm("Weekly archive") + f"- [{week}](/weeks/{week}/)\n")
-    write(week_dir / "_index.md", fm(f"FROST Watch weekly rollup {week}") + f"""
-> {DISCLAIMER}
+    write(CONTENT / "latest" / "_index.md", fm("Latest activity") + link_list(items))
+    write(CONTENT / "tags" / "_index.md", fm("Tags") + "\n".join(
+        [f"## {tag}\n\n{link_list(rows)}" for tag, rows in sorted(by_tag.items())]
+    ) + "\n")
+    write(CONTENT / "source-types" / "_index.md", fm("Source types") + "\n".join(
+        [f"## {st}\n\n{link_list(rows)}" for st, rows in sorted(by_type.items())]
+    ) + "\n")
+    write(CONTENT / "recently-changed" / "_index.md", fm("Recently changed") + link_list(items))
+    write(CONTENT / "newly-discovered" / "_index.md", fm("Newly discovered") + link_list(items))
+    write(
+        CONTENT / "needs-human-source-seeding" / "_index.md",
+        fm("Needs human source seeding") + "No live collector events queued for human seeding.\n",
+    )
 
-This rollup is generated from the structured feed and can contain both seeded monitored sources and live-discovered candidates. Weekly rollups summarize repository activity, package/docs changes, accepted sources, and candidate discoveries from the same feed.
-
-## Seeded activity
-
-""" + "\n".join(item_line(i) for i in items) + "\n")
-
-    placeholder = f"> {DISCLAIMER}\n\nNo live collector events yet. This view will populate after continuous collection is enabled.\n"
-    changed_body = [
-        f"> {DISCLAIMER}\n",
-        "Activity uses the best available upstream date: source update, source publication, or Frostwatch discovery time.\n",
-        *[item_line(i) for i in activity_items],
-    ]
-    write(CONTENT / "recently-changed" / "_index.md", fm("Recently changed") + "\n".join(changed_body) + "\n")
-
-    recent_7 = [i for i in discovered_items if within_days(i, 7, now_dt)]
-    recent_30 = [i for i in discovered_items if within_days(i, 30, now_dt)]
-    discovered_body = [
-        f"> {DISCLAIMER}\n",
-        "Discovery date means the first scan where Frostwatch saw the item. It does not change on later refreshes.\n",
-        f"## Discovered in the last 7 days ({len(recent_7)})\n",
-        *[item_line(i) for i in recent_7],
-        "",
-        f"## Discovered in the last 30 days ({len(recent_30)})\n",
-        *[item_line(i) for i in recent_30],
-        "",
-        f"## All discovered items ({len(discovered_items)})\n",
-        *[item_line(i) for i in discovered_items],
-    ]
-    write(CONTENT / "newly-discovered" / "_index.md", fm("Newly discovered") + "\n".join(discovered_body) + "\n")
-    write(CONTENT / "needs-human-source-seeding" / "_index.md", fm("Needs human source seeding") + placeholder)
-
-    write(CONTENT / "topics" / "frost-silent-payments" / "_index.md", fm("FROST + Silent Payments overlap") + f"""
-> Working notes. {DISCLAIMER}
-
-This topic tracks the intersection between FROST and Silent Payments integration work.
-
-## Initial areas to track
-
-- Verification-share availability: FROST verifying shares are DKG outputs and must be available to DLEQ verifiers.
-- Key management and hardware-signer UX: FROST shares are Shamir shares and require persistence/recovery beyond ordinary BIP-32 seed derivation.
-- Epoch consistency: refreshed or reshared participant shares must not be mixed across epochs.
-- PSBT/group-config surfaces for FROST configuration, signing commitments, signature shares, and participant verifying shares.
-
-Future updates should link back to structured feed items and public sources.
-""")
-
-    print(f"rendered Hugo content from {len(items)} items")
+    print(f"rendered slim Hugo content from {len(items)} items, weeks={week_dirs}")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

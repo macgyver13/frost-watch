@@ -1,5 +1,3 @@
 ---
-title: "Weekly archive"
+title: "Weeks"
 ---
-
-- [2026-W36](/weeks/2026-W36/)
