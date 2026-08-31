@@ -82,10 +82,35 @@ def title_for(entry: dict, kind: str) -> str:
     if kind == "github_pull_requests" and "url" in entry:
         match = re.match(r"https://github\.com/([^/]+/[^/]+)/pull/(\d+)/?$", entry["url"])
         if match:
-            return f"{match.group(1)} PR #{match.group(2)}"
+            return f"{match.group(1)} #{match.group(2)}"
     if "repo" in entry:
         return entry["repo"]
     return entry.get("url", entry.get("id", "Seeded source"))
+
+
+def is_generated_summary(summary: str | None) -> bool:
+    text = (summary or "").strip().lower()
+    return text.startswith("seeded monitored source for frost watch:")
+
+
+def summary_for(entry: dict, kind: str, old_item: dict | None = None) -> str:
+    summary = str(entry.get("summary") or "").strip()
+    if summary and not is_generated_summary(summary):
+        return summary
+    old_summary = str((old_item or {}).get("summary") or "").strip()
+    if old_summary and not is_generated_summary(old_summary):
+        return old_summary
+    title = title_for(entry, kind)
+    source_type = source_type_for(kind)
+    if source_type == "github_pull_request":
+        return f"Tracked pull request: {title}."
+    if source_type == "github_repository":
+        return f"Public repository related to FROST: {title}."
+    if source_type == "package_crate":
+        return f"Published crate: {title}."
+    if source_type == "docs_page":
+        return f"Public documentation: {title}."
+    return title
 
 
 def github_headers() -> dict[str, str]:
@@ -191,7 +216,7 @@ def build_seeded_item(
     item = {
         "id": item_id,
         "title": title_for(entry, kind),
-        "summary": f"Seeded monitored source for FROST Watch: {title_for(entry, kind)}.",
+        "summary": summary_for(entry, kind, old_item),
         "source_url": url,
         "source_type": source_type,
         "event_type": "source_seeded",
@@ -255,7 +280,14 @@ def build_github_repo_item(
     discovered_at = discovery_time(old_item, observed_at)
     topics = [str(topic) for topic in repo.get("topics", [])]
     tags = list(dict.fromkeys(["frost", *collector.get("tags", []), *topics]))
-    summary = repo.get("description") or f"GitHub repository matched Frostwatch live collector query: {collector['query']}."
+    desc = str(repo.get("description") or "").strip()
+    old_summary = str(old_item.get("summary") or "").strip()
+    if desc:
+        summary = desc
+    elif old_summary and not old_summary.lower().startswith("github repository matched frostwatch live collector query:"):
+        summary = old_summary
+    else:
+        summary = f"Public GitHub repository: {full_name}."
     activity_at = (
         repo.get("pushed_at")
         or repo.get("updated_at")
