@@ -1,12 +1,6 @@
 (function () {
   "use strict";
 
-  var TYPE_LABEL = {
-    docs_page: "Docs",
-    github_repository: "Repo",
-    github_pull_request: "PR",
-    package_crate: "Crate"
-  };
   var TYPE_DOT = {
     docs_page: "docs",
     github_repository: "repo",
@@ -24,25 +18,6 @@
   var TAG_ALIAS = { "threshold-signatures": "threshold" };
   var GENERATED_SUMMARY = /^seeded monitored source for frost watch:/i;
   var GENERATED_QUERY = /^github repository matched frostwatch live collector query:/i;
-
-  var FALLBACK_SUMMARIES = {
-    "https://frost.zfnd.org/index.html": "Zcash Foundation FROST book: protocol, ciphersuites, and library usage.",
-    "https://developer.blockchaincommons.com/frost/": "Developer page covering FROST implementations, education, and Gordian stack notes.",
-    "https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html": "FROST threshold signing module in the schnorr_fun Rust crate.",
-    "https://frostsnap.com/docs/comparison/": "How Frostsnap’s FROST hardware setup compares to other threshold arrangements.",
-    "https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/": "On shaping FROST DKG libraries into something operators can actually run.",
-    "https://github.com/ZcashFoundation/frost": "RFC 9591 reference implementation (ciphersuite-generic FROST in Rust).",
-    "https://github.com/frostsnap/frostsnap": "Hardware FROST signing with taproot; round-optimized for geographically distributed devices.",
-    "https://github.com/BlockstreamResearch/secp256k1-zkp": "libsecp256k1-zkp: experimental modules including FROST work in flight.",
-    "https://github.com/BlockstreamResearch/bip-frost-dkg": "ChillDKG: distributed key generation for FROST, with a Python 3.12 reference.",
-    "https://github.com/cmdruid/frost": "Flexible, round-optimized threshold signature library for BIP340 taproot.",
-    "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138": "BIP-340 compatible FROST module for libsecp256k1-zkp. Open.",
-    "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278": "FROST trusted dealer (no DKG). Implements the FROST signing BIP. Open.",
-    "https://github.com/ZcashFoundation/frost/pull/730": "Adds frost-secp256k1-tr (BIP340 / BIP341 taproot ciphersuite). Merged.",
-    "https://crates.io/crates/frost-secp256k1-tr": "Schnorr / FROST over secp256k1 with BIP340 and BIP341 taproot tweaks.",
-    "https://github.com/olegfomenko/chilldkg": "FROST DKG BIP Implementation.",
-    "https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet": "FROST + ChillDKG Bitcoin wallet in Rust."
-  };
 
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -149,10 +124,6 @@
     return { year: parseInt(m[1], 10), week: parseInt(m[2], 10), slug: m[1] + "-W" + String(m[2]).padStart(2, "0") };
   }
 
-  function typeLabel(t) {
-    return TYPE_LABEL[t] || (t ? String(t).replace(/_/g, " ") : "Item");
-  }
-
   function isCandidate(item) {
     return item && (item.status === "candidate" || (item.tags || []).indexOf("candidate") !== -1);
   }
@@ -169,7 +140,6 @@
   }
 
   function displaySummary(item) {
-    var url = item.source_url || item.url || "";
     var raw = (item.summary || "").trim();
     if (raw && !GENERATED_SUMMARY.test(raw) && !GENERATED_QUERY.test(raw)) {
       if (raw.length > 160) {
@@ -179,7 +149,6 @@
       }
       return raw.charAt(raw.length - 1) === "." ? raw : raw + ".";
     }
-    if (FALLBACK_SUMMARIES[url]) return FALLBACK_SUMMARIES[url];
     var title = displayTitle(item);
     var kind = item.source_type;
     if (kind === "github_pull_request") return "Tracked pull request: " + title + ".";
@@ -213,8 +182,21 @@
     return items.slice().sort(function (a, b) {
       var da = itemDate(a) || "";
       var db = itemDate(b) || "";
-      if (isCandidate(a) !== isCandidate(b)) return isCandidate(a) ? -1 : 1;
       return db < da ? -1 : db > da ? 1 : 0;
+    });
+  }
+
+  function itemWeek(item) {
+    var d = parseDate(item.discovered_at || item.event_time || item.activity_at);
+    return d ? isoWeekParts(d) : null;
+  }
+
+  function itemsForWeek(items, weekSlug) {
+    var parsed = parseWeekSlug(weekSlug);
+    if (!parsed) return [];
+    return items.filter(function (item) {
+      var p = itemWeek(item);
+      return p && p.year === parsed.year && p.week === parsed.week;
     });
   }
 
@@ -267,15 +249,12 @@
     if (!root) return;
     var html = '<div class="feed-label">Latest activity</div>';
     sortActivity(items).forEach(function (item) {
-      var cand = isCandidate(item);
       var tags = topicTags(item, 3).map(function (t) {
         return '<span class="tag">' + esc(t) + "</span>";
       }).join("");
       html +=
         '<article class="item">' +
           '<div class="item-top">' +
-            '<span class="pill type">' + esc(typeLabel(item.source_type)) + "</span>" +
-            '<span class="pill ' + (cand ? "candidate" : "seeded") + '">' + (cand ? "Candidate" : "Seeded") + "</span>" +
             "<h3><a href=\"" + esc(item.source_url) + "\">" + esc(displayTitle(item)) + "</a></h3>" +
           "</div>" +
           "<p>" + esc(displaySummary(item)) + "</p>" +
@@ -288,6 +267,7 @@
 
   function renderWeek(items, weekSlug) {
     var parsed = parseWeekSlug(weekSlug);
+    items = itemsForWeek(items, weekSlug);
     if (parsed) {
       setText("week-range", formatWeekRange(parsed.year, parsed.week));
       document.querySelectorAll(".rail a[data-week]").forEach(function (a) {
@@ -298,7 +278,7 @@
       });
     }
     var cands = items.filter(isCandidate);
-    var prs = items.filter(function (i) { return i.source_type === "github_pull_request"; });
+    var prs = items.filter(function (i) { return i.source_type === "github_pull_request" && !isCandidate(i); });
     var repos = items.filter(function (i) {
       return !isCandidate(i) && (i.source_type === "github_repository" || i.source_type === "package_crate");
     });
@@ -313,14 +293,8 @@
 
     function rows(list) {
       return list.map(function (item) {
-        var cand = isCandidate(item);
-        var left =
-          (cand ? '<span class="pill candidate">Candidate</span>' : "") +
-          '<span class="pill type">' + esc(typeLabel(item.source_type)) + "</span>" +
-          (cand ? "" : '<span class="pill seeded">Seeded</span>');
         return (
           '<div class="row">' +
-            '<div class="left">' + left + "</div>" +
             "<div>" +
               '<a class="title" href="' + esc(item.source_url) + '">' + esc(displayTitle(item)) + "</a>" +
               '<div class="sum">' + esc(displaySummary(item)) + "</div>" +
@@ -480,7 +454,6 @@
     root.innerHTML = list.map(function (s) {
       return (
         '<div class="source-row">' +
-          '<span class="pill type">' + esc(typeLabel(s.source_type)) + "</span>" +
           '<a class="name" href="' + esc(s.url) + '">' + esc(s.name) + "</a>" +
           '<span class="proj">' + esc(s.project || "") + "</span>" +
         "</div>"

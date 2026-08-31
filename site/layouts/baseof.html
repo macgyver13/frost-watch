@@ -7,6 +7,13 @@
   <meta name="description" content="{{ .Site.Params.description }}">
   <link rel="stylesheet" href="/style.css">
   <link rel="alternate" type="application/rss+xml" title="FROST Watch" href="/feed.xml">
+{{- if or (eq .RelPermalink "/weeks/") (eq .RelPermalink "/weeks") }}
+  {{- with site.GetPage "/weeks" }}
+    {{- with (index (sort .Sections "RelPermalink" "desc") 0) }}
+  <meta http-equiv="refresh" content="0; url={{ .RelPermalink }}">
+    {{- end }}
+  {{- end }}
+{{- end }}
 </head>
 {{- $page := "other" -}}
 {{- if eq .Kind "home" }}{{ $page = "home" }}{{ end -}}
