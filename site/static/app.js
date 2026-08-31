@@ -343,10 +343,6 @@
     return "#";
   }
 
-  function projectCandidate(project, items) {
-    if ((project.tags || []).indexOf("candidate") !== -1) return true;
-    return items.some(function (i) { return i.project === project.name && isCandidate(i); });
-  }
 
   function renderAtlas(projects, items, sources) {
     var grid = document.getElementById("atlas-grid");
@@ -394,7 +390,6 @@
         coverage.innerHTML = "<b>" + shown.length + " project" + (shown.length === 1 ? "" : "s") + "</b> · " + sourceCount + " sources";
       }
       grid.innerHTML = shown.map(function (p) {
-        var cand = projectCandidate(p, items);
         var mine = items.filter(function (i) { return i.project === p.name; });
         var types = [];
         var seenT = {};
@@ -407,10 +402,9 @@
         var name = p.name;
         if (name === "Onyekachukwu-Nweke/bitcoin-frost-wallet") name = "bitcoin-frost-wallet";
         return (
-          '<article class="card' + (cand ? " cand" : "") + '">' +
+          '<article class="card">' +
             '<div class="card-top">' +
               "<h3><a href=\"" + esc(projectHref(p, items)) + "\">" + esc(name) + "</a></h3>" +
-              '<span class="pill ' + (cand ? "candidate" : "seeded") + '">' + (cand ? "Candidate" : "Seeded") + "</span>" +
             "</div>" +
             '<p class="what">' + esc(projectSummary(p, items)) + "</p>" +
             '<div class="card-foot">' +

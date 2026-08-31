@@ -9,9 +9,6 @@
   --link-hover: #ffffff;
   --border: #2a2a2a;
   --accent: #c8c8c8;
-  --candidate: #e6b45a;
-  --cand-bg: rgba(230,180,90,.10);
-  --cand-bd: rgba(230,180,90,.42);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--text); }
@@ -115,11 +112,6 @@ nav a.active {
 }
 .pill.type { color: var(--text); background: var(--surface-2); border-color: #333; }
 .pill.seeded { color: var(--muted); }
-.pill.candidate {
-  color: var(--candidate);
-  border-color: var(--cand-bd);
-  background: var(--cand-bg);
-}
 .pill.filter {
   height: 24px;
   padding: 0 10px;
@@ -373,9 +365,6 @@ nav a.active {
   border-radius: 4px;
   padding: 14px 14px 12px;
   min-height: 148px;
-}
-.card.cand {
-  border-left: 2px solid var(--candidate);
 }
 .card-top {
   display: flex;
