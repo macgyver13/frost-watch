@@ -119,6 +119,33 @@ class DiscoveryDateTests(unittest.TestCase):
             finally:
                 build_seed_feed.OUT = old_out
 
+    def test_seed_summary_is_used_when_present(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                (out / "feed.json").write_text(json.dumps({"items": []}))
+                (out / "projects.json").write_text(json.dumps({"projects": []}))
+                (out / "sources.json").write_text(json.dumps({"sources": []}))
+                cfg = {"seeded_sources": {"docs_pages": [{
+                    "id": "frost-zfnd",
+                    "name": "FROST reference",
+                    "url": "https://frost.zfnd.org/index.html",
+                    "project": "Zcash Foundation FROST",
+                    "tags": ["spec"],
+                    "summary": "Zcash Foundation FROST book: protocol, ciphersuites, and library usage.",
+                }]}}
+                items, _projects, _sources = build_seed_feed.build_items(cfg)
+                self.assertEqual(
+                    items[0]["summary"],
+                    "Zcash Foundation FROST book: protocol, ciphersuites, and library usage.",
+                )
+                self.assertFalse(items[0]["summary"].startswith("Seeded monitored source"))
+            finally:
+                build_seed_feed.OUT = old_out
+
+
 
 if __name__ == "__main__":
     unittest.main()
