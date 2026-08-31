@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{- $isRoot := or (eq .RelPermalink "/topics/") (eq .RelPermalink "/topics") -}}
+<div class="wrap">
+  {{- if $isRoot -}}
+  <div class="hero">
+    <h1>Topics</h1>
+    <p class="lede">Working notes attached to the FROST Watch index.</p>
+  </div>
+  {{ partial "start-here.html" (dict "here" "topic") }}
+  <div class="prose">
+    <ul>
+      <li><a href="/topics/frost-silent-payments/">FROST + Silent Payments</a></li>
+    </ul>
+  </div>
+  {{- else -}}
+  <div class="hero">
+    <h1>{{ .Title }}</h1>
+    <p class="lede">Working notes on the overlap. Four surfaces to keep watching as send-to-silent-payment flows meet threshold signing.</p>
+  </div>
+  {{ partial "start-here.html" (dict "here" "topic") }}
+  {{ partial "silent-payments.html" . }}
+  {{- end -}}
+</div>
+{{ end }}

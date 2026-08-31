@@ -1,0 +1,30 @@
+<section class="sp" id="silent-payments">
+  <h2>FROST + Silent Payments</h2>
+  <p class="intro">Working notes on the overlap. Four surfaces to keep watching as send-to-silent-payment flows meet threshold signing.</p>
+  <div class="sp-grid">
+    <div class="note">
+      <dl>
+        <dt>DLEQ / verifying shares</dt>
+        <dd>FROST verifying shares are DKG outputs and must be available to DLEQ verifiers.</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <dl>
+        <dt>Hardware-signer UX</dt>
+        <dd>FROST shares are Shamir shares and need persistence and recovery beyond ordinary BIP-32 seed derivation.</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <dl>
+        <dt>Epoch consistency</dt>
+        <dd>Refreshed or reshared participant shares must not be mixed across epochs.</dd>
+      </dl>
+    </div>
+    <div class="note">
+      <dl>
+        <dt>PSBT / group-config</dt>
+        <dd>Surfaces for FROST configuration, signing commitments, signature shares, and participant verifying shares.</dd>
+      </dl>
+    </div>
+  </div>
+</section>

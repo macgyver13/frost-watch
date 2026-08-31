@@ -2,6 +2,7 @@ baseURL = "https://frost-watch.pages.dev/"
 locale = "en-us"
 title = "FROST Watch"
 enableRobotsTXT = true
+disablePathToLower = true
 
 [params]
   description = "Public-source activity tracking for FROST and directly related dependencies."
