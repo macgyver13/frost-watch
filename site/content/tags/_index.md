@@ -15,6 +15,7 @@ title: "Tags"
 
 ## candidate
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
@@ -41,6 +42,7 @@ title: "Tags"
 
 ## frost
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)
@@ -60,6 +62,7 @@ title: "Tags"
 
 ## github
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
@@ -97,6 +100,7 @@ title: "Tags"
 
 ## repository-discovery
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 

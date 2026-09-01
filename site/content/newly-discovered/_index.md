@@ -2,6 +2,7 @@
 title: "Newly discovered"
 ---
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)

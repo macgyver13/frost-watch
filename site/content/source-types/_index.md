@@ -18,6 +18,7 @@ title: "Source types"
 
 ## github_repository
 
+- [pGerhart/FaFrost](https://github.com/pGerhart/FaFrost)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)
