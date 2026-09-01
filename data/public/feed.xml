@@ -3,14 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Tue, 01 Sep 2026 12:13:05 +0000</lastBuildDate>
-<item>
-<title>pGerhart/FaFrost</title>
-<link>https://github.com/pGerhart/FaFrost</link>
-<guid isPermaLink="false">gh-search:github-frost-repo-discovery:pgerhart-fafrost</guid>
-<description>Prototype implementation of FaFROST; a two-round fully adaptive Schnorr threshold signature scheme with identifiable aborts</description>
-<pubDate>Tue, 01 Sep 2026 12:13:03 +0000</pubDate>
-</item>
+<lastBuildDate>Tue, 01 Sep 2026 18:13:54 +0000</lastBuildDate>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>
