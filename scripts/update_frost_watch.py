@@ -45,6 +45,11 @@ def has_changes() -> bool:
     return bool(result.stdout.strip())
 
 
+def sync_with_origin_main() -> None:
+    run(["git", "fetch", "origin", "main"], check=True)
+    run(["git", "rebase", "origin/main"], check=True)
+
+
 def push_with_token(token: str) -> str:
     push_url = f"https://x-access-token:{token}@github.com/macgyver13/frost-watch.git"
     try:
@@ -61,6 +66,23 @@ def main() -> int:
     parser.add_argument("--message", default="chore: refresh FROST Watch feed", help="Commit message")
     args = parser.parse_args()
 
+    if args.no_push:
+        py = ensure_venv()
+        steps = [
+            [str(py), "scripts/build_seed_feed.py"],
+            [str(py), "scripts/sync_hugo_content.py"],
+            [str(py), "scripts/verify_public_artifacts.py"],
+            ["hugo", "--source", "site", "--minify"],
+        ]
+        for step in steps:
+            out = run(step).stdout.strip()
+            if out:
+                print(out)
+        print("refresh complete: no-push mode")
+        return 0
+
+    sync_with_origin_main()
+
     py = ensure_venv()
     steps = [
         [str(py), "scripts/build_seed_feed.py"],
@@ -72,10 +94,6 @@ def main() -> int:
         out = run(step).stdout.strip()
         if out:
             print(out)
-
-    if args.no_push:
-        print("refresh complete: no-push mode")
-        return 0
 
     if not has_changes() and not args.allow_empty:
         print("refresh complete: no changes to publish")
