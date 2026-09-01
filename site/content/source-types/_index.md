@@ -12,9 +12,9 @@ title: "Source types"
 
 ## github_pull_request
 
-- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
-- [ZcashFoundation/frost PR #730](https://github.com/ZcashFoundation/frost/pull/730)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 
 ## github_repository
 
@@ -29,3 +29,4 @@ title: "Source types"
 ## package_crate
 
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
+

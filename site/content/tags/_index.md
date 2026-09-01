@@ -6,8 +6,8 @@ title: "Tags"
 
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
 - [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
-- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
 
 ## blog
 
@@ -53,9 +53,9 @@ title: "Tags"
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
 - [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
 - [cmdruid/frost](https://github.com/cmdruid/frost)
-- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
-- [ZcashFoundation/frost PR #730](https://github.com/ZcashFoundation/frost/pull/730)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
 
 ## github
@@ -79,7 +79,7 @@ title: "Tags"
 
 ## merged
 
-- [ZcashFoundation/frost PR #730](https://github.com/ZcashFoundation/frost/pull/730)
+- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 
 ## package
 
@@ -87,9 +87,9 @@ title: "Tags"
 
 ## pull-request
 
-- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
-- [ZcashFoundation/frost PR #730](https://github.com/ZcashFoundation/frost/pull/730)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 
 ## reference
 
@@ -113,8 +113,8 @@ title: "Tags"
 ## secp256k1
 
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
-- [BlockstreamResearch/secp256k1-zkp PR #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp PR #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
 
 ## spec
@@ -129,3 +129,4 @@ title: "Tags"
 ## threshold-signatures
 
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
+
