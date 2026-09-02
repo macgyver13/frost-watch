@@ -18,6 +18,7 @@ title: "Source types"
 
 ## github_repository
 
+- [luxfi/threshold](https://github.com/luxfi/threshold)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)

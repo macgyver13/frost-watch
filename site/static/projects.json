@@ -1,11 +1,34 @@
 {
   "projects": [
     {
+      "activity_at": "2026-09-02T18:09:21Z",
+      "discovered_at": "2026-09-02T18:17:21Z",
+      "first_seen": "2026-09-02T18:17:21Z",
+      "id": "luxfi-threshold",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
+      "latest_discovered_at": "2026-09-02T18:17:21Z",
+      "name": "luxfi/threshold",
+      "sources": [
+        "gh-search:github-frost-repo-discovery:luxfi-threshold"
+      ],
+      "tags": [
+        "bitcoin",
+        "candidate",
+        "cggmp",
+        "ecdsa",
+        "frost",
+        "github",
+        "repository-discovery",
+        "secp256k1",
+        "signatures"
+      ]
+    },
+    {
       "activity_at": "2026-09-02T01:05:59Z",
       "discovered_at": "2026-08-30T22:10:26Z",
       "first_seen": "2026-08-30T22:10:26Z",
       "id": "olegfomenko-chilldkg",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-30T22:10:26Z",
       "name": "olegfomenko/chilldkg",
       "sources": [
@@ -26,7 +49,7 @@
       "discovered_at": "2026-08-30T22:10:26Z",
       "first_seen": "2026-08-30T22:10:26Z",
       "id": "onyekachukwu-nweke-bitcoin-frost-wallet",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-30T22:10:26Z",
       "name": "Onyekachukwu-Nweke/bitcoin-frost-wallet",
       "sources": [
@@ -45,7 +68,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "zcash-foundation-frost",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Zcash Foundation FROST",
       "sources": [
@@ -68,7 +91,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "blockchain-commons",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Blockchain Commons",
       "sources": [
@@ -86,7 +109,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "schnorr-fun",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "schnorr_fun",
       "sources": [
@@ -104,7 +127,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "frostsnap",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Frostsnap",
       "sources": [
@@ -124,7 +147,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "skeptrune",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Skeptrune",
       "sources": [
@@ -141,7 +164,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "secp256k1-zkp",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "secp256k1-zkp",
       "sources": [
@@ -162,7 +185,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "chilldkg-bip-frost-dkg",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "ChillDKG / BIP FROST DKG",
       "sources": [
@@ -181,7 +204,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "cmdruid-frost",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "cmdruid/frost",
       "sources": [
@@ -197,7 +220,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "frost-secp256k1-tr",
-      "last_observed_activity": "2026-09-02T12:16:28Z",
+      "last_observed_activity": "2026-09-02T18:17:21Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "frost-secp256k1-tr",
       "sources": [
