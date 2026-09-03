@@ -2,7 +2,6 @@
 title: "Latest activity"
 ---
 
-- [luxfi/threshold](https://github.com/luxfi/threshold)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)

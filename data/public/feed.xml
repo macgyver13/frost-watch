@@ -3,14 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Wed, 02 Sep 2026 18:17:23 +0000</lastBuildDate>
-<item>
-<title>luxfi/threshold</title>
-<link>https://github.com/luxfi/threshold</link>
-<guid isPermaLink="false">gh-search:github-frost-repo-discovery:luxfi-threshold</guid>
-<description>▼ LUX multiparty CGGMP21, FROST, LSS protocol and other threshold signature schemes.</description>
-<pubDate>Wed, 02 Sep 2026 18:17:21 +0000</pubDate>
-</item>
+<lastBuildDate>Thu, 03 Sep 2026 00:18:13 +0000</lastBuildDate>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>
