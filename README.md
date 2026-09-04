@@ -26,10 +26,13 @@ python3 scripts/sync_hugo_content.py
 python3 scripts/verify_public_artifacts.py
 ```
 
-`config/source-seeds.yaml` also supports live GitHub repository discovery under
-`live_collectors.github_repository_searches`. Each collector runs a GitHub
-repository search during refresh and emits candidate `source_discovered` items
-into the structured feed alongside the static seeded sources.
+`config/source-seeds.yaml` also supports live discovery under
+`live_collectors.github_repository_searches` and
+`live_collectors.delving_topic_searches`. Each collector runs during refresh
+and emits candidate `source_discovered` items alongside seeded sources.
+Delving queries match the GitHub terms (`FROST`, `chilldkg`). The scheduled
+`update_frost_watch.py` run already calls `build_seed_feed.py`, so no extra
+cron step is required.
 
 Build the site:
 

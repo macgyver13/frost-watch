@@ -110,3 +110,12 @@ live_collectors:
       query: 'chilldkg archived:false'
       max_results: 10
       tags: [frost, github, candidate, repository-discovery, chilldkg]
+  delving_topic_searches:
+    - id: delving-frost
+      query: FROST
+      max_results: 10
+      tags: [frost, delving, candidate, topic-discovery]
+    - id: delving-chilldkg
+      query: chilldkg
+      max_results: 10
+      tags: [frost, delving, candidate, topic-discovery, chilldkg]

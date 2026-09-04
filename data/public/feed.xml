@@ -3,7 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Fri, 04 Sep 2026 18:24:16 +0000</lastBuildDate>
+<lastBuildDate>Fri, 04 Sep 2026 20:49:31 +0000</lastBuildDate>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>
@@ -115,5 +115,54 @@
 <guid isPermaLink="false">seed:frost-secp256k1-tr</guid>
 <description>Schnorr / FROST over secp256k1 with BIP340 and BIP341 taproot tweaks.</description>
 <pubDate>Fri, 28 Aug 2026 19:59:47 +0000</pubDate>
+</item>
+<item>
+<title>Privately running wallet privacy heuristics on your own UTXOs without needing to run your own node</title>
+<link>https://delvingbitcoin.org/t/privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node/2625</link>
+<guid isPermaLink="false">delving-search:delving-frost:2625</guid>
+<description>...n is operationally expensive. PK_server being a constant is a security choice, but rotating v currently needs a new trusted setup. The planned fix is FROST threshold management of v , and no FROST code exists yet. An OHTTP fallback is planned but not built. Tor .onion is the only privacy transport implem...</description>
+<pubDate>Sat, 20 Jun 2026 18:56:54 +0000</pubDate>
+</item>
+<item>
+<title>K-of-N threshhold key generation scheme by limited shared secrets</title>
+<link>https://delvingbitcoin.org/t/k-of-n-threshhold-key-generation-scheme-by-limited-shared-secrets/2623</link>
+<guid isPermaLink="false">delving-search:delving-frost:2623</guid>
+<description>Introduction The FROST scheme is based on Verifiable Secret Sharing, where signers first perform Shamir Secret Sharing in homomorphic space, then each signer stores the gen...</description>
+<pubDate>Sat, 20 Jun 2026 06:52:59 +0000</pubDate>
+</item>
+<item>
+<title># CAAS: A Continuous Adversarial Audit Standard for secp256k1 Libraries</title>
+<link>https://delvingbitcoin.org/t/caas-a-continuous-adversarial-audit-standard-for-secp256k1-libraries/2416</link>
+<guid isPermaLink="false">delving-search:delving-frost:2416</guid>
+<description>...tal), embedded platform support (ESP32, STM32), and full Bitcoin protocol coverage (ECDSA, Schnorr BIP-340, BIP-352 Silent Payments, BIP-324, MuSig2, FROST). Craig Raw integrated the library into [Frigate]( https://github.com/sparrowwallet/frigate ) for BIP-352 Silent Payments scanning. This post describ...</description>
+<pubDate>Tue, 14 Apr 2026 01:44:13 +0000</pubDate>
+</item>
+<item>
+<title>Towards A K-of-N Lightning Network Node</title>
+<link>https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395</link>
+<guid isPermaLink="false">delving-search:delving-frost:2395</guid>
+<description>...th all that latency down under. K-of-N MuSig2? While MuSig2 (and Nested MuSig2) are designed as n-of-n signing protocols, I should note that &quot;k-of-n&quot; FROST is really a Verifiable Shamir Secret Sharing scheme that ultimately uses much of the MuSig2 signing protocol for actual signing. That is, instead of...</description>
+<pubDate>Wed, 08 Apr 2026 09:00:30 +0000</pubDate>
+</item>
+<item>
+<title>UltrafastSecp256k1 v3.3</title>
+<link>https://delvingbitcoin.org/t/ultrafastsecp256k1-v3-3/2346</link>
+<guid isPermaLink="false">delving-search:delving-frost:2346</guid>
+<description>...message == false - **Determinism**: Same (key, msg) - &amp;gt; identical signature - **Low-S**: All signatures satisfy BIP-62 low-S requirement ### [27/55] FROST Reference KAT Vectors -- 9 sub-tests 1. Lagrange coefficient mathematical properties 2. FROST DKG determinism with fixed seeds 3. FROST DKG Feldman V...</description>
+<pubDate>Fri, 20 Mar 2026 00:48:07 +0000</pubDate>
+</item>
+<item>
+<title>Chain Code Delegation: Private Access Control for Bitcoin Keys</title>
+<link>https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837</link>
+<guid isPermaLink="false">delving-search:delving-frost:1837</guid>
+<description>...articipated in the transaction. One solution to this problem is to forgo the use of Script and instead use multiparty computation (MPC), such as with FROST, as described by Nick Farrow [0]. Another solution is to use disjoint spending paths with Tapscript. For example, a 2-of-3 can be expressed in a Taps...</description>
+<pubDate>Tue, 15 Jul 2025 00:38:32 +0000</pubDate>
+</item>
+<item>
+<title>Radpool: Decentralised Mining Pool With Futures Contracts For Payouts</title>
+<link>https://delvingbitcoin.org/t/radpool-decentralised-mining-pool-with-futures-contracts-for-payouts/1262</link>
+<guid isPermaLink="false">delving-search:delving-frost:1262</guid>
+<description>...ners based on the miner's hashrate. These contracts are settled at fixed, well known intervals. MSPs with enough hashrate generate attestations using FROST threshold signatures to settle these DLC contracts. The MSPs in turn get the payout from the coinbase of the pool's blocks using PPLNS. The MSPs thus...</description>
+<pubDate>Sat, 16 Nov 2024 14:58:04 +0000</pubDate>
 </item>
 </channel></rss>

@@ -14,6 +14,8 @@ hidden_tags:
   - candidate
   - pull-request
   - package
+  - delving
+  - topic-discovery
 relevance:
   always_match:
     - frost
