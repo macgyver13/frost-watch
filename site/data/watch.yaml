@@ -1,0 +1,33 @@
+name: FROST Watch
+base_url: https://frost-watch.pages.dev/
+description: Public-source activity tracking for FROST and directly related dependencies.
+default_tag: frost
+preferred_chips:
+  - bitcoin
+  - dkg
+  - hardware
+  - rust
+  - spec
+hidden_tags:
+  - github
+  - repository-discovery
+  - candidate
+  - pull-request
+  - package
+relevance:
+  always_match:
+    - frost
+    - chilldkg
+    - roast
+    - threshold-schnorr
+  required_any:
+    - frost
+    - chilldkg
+    - roast
+    - threshold-schnorr
+  context_any: []
+topics:
+  - title: FROST + Silent Payments
+    slug: frost-silent-payments
+    blurb: Working notes on the overlap as send-to-silent-payment flows meet threshold signing.
+    note: Four surfaces — DLEQ shares, hardware UX, epoch consistency, PSBT/group-config.

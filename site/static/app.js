@@ -7,19 +7,28 @@
     github_pull_request: "pr",
     package_crate: "crate"
   };
-  var HIDDEN_TAGS = {
-    frost: true,
-    github: true,
-    "repository-discovery": true,
-    candidate: true,
-    "pull-request": true,
-    package: true
-  };
-  var TAG_ALIAS = { "threshold-signatures": "threshold" };
-  var GENERATED_SUMMARY = /^seeded monitored source for frost watch:/i;
-  var GENERATED_QUERY = /^github repository matched frostwatch live collector query:/i;
+  var TAG_ALIAS = {};
+  var GENERATED_SUMMARY = /^seeded monitored source for /i;
+  var GENERATED_QUERY = /^github repository matched .+ live collector query:/i;
 
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  var HIDDEN_TAGS = {};
+  var PREFERRED_CHIPS = ["docs", "spec"];
+  var EXPLICIT_CHIPS = false;
+
+  function applyWatch(raw) {
+    raw = raw || {};
+    var hidden = {};
+    (raw.hidden_tags || []).forEach(function (t) {
+      if (t) hidden[String(t)] = true;
+    });
+    if (raw.default_tag) hidden[String(raw.default_tag)] = true;
+    HIDDEN_TAGS = hidden;
+    var chips = raw.preferred_chips;
+    EXPLICIT_CHIPS = !!(chips && chips.length);
+    PREFERRED_CHIPS = EXPLICIT_CHIPS ? chips.slice() : ["docs", "spec"];
+  }
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -154,7 +163,7 @@
     if (kind === "github_pull_request") return "Tracked pull request: " + title + ".";
     if (kind === "package_crate") return "Published crate: " + title + ".";
     if (kind === "docs_page") return "Public documentation: " + title + ".";
-    if (kind === "github_repository") return "Public repository related to FROST: " + title + ".";
+    if (kind === "github_repository") return "Public repository: " + title + ".";
     return title;
   }
 
@@ -219,15 +228,11 @@
   function fillStartCounts(feed, projects, sources) {
     var nSources = (sources.sources || []).length || (feed.items || []).length;
     var nProjects = (projects.projects || []).length;
-    var nCand = (feed.items || []).filter(isCandidate).length;
     document.querySelectorAll("[data-count=sources]").forEach(function (el) {
       el.textContent = nSources + " source" + (nSources === 1 ? "" : "s");
     });
     document.querySelectorAll("[data-count=projects]").forEach(function (el) {
       el.textContent = nProjects + " project" + (nProjects === 1 ? "" : "s");
-    });
-    document.querySelectorAll("[data-count=candidates]").forEach(function (el) {
-      el.textContent = nCand + " new candidate" + (nCand === 1 ? "" : "s");
     });
     var now = new Date();
     var cur = isoWeekParts(now);
@@ -239,16 +244,51 @@
       var days = (now.getTime() - d.getTime()) / 86400000;
       return days >= 0 && days <= 7;
     }).length;
+    document.querySelectorAll("[data-count=week-new]").forEach(function (el) {
+      el.textContent = weekNew + " new this week";
+    });
     setText("stat-sources", String(nSources));
     setText("stat-projects", String(nProjects));
     setText("stat-new", String(weekNew));
   }
 
+  function topicQuery() {
+    try {
+      return new URLSearchParams(window.location.search).get("topic") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function itemMatchesTopic(item, slug) {
+    if (!slug) return true;
+    var key = String(slug).toLowerCase();
+    var tags = item.tags || [];
+    for (var i = 0; i < tags.length; i++) {
+      if (String(tags[i]).toLowerCase() === key) return true;
+    }
+    return String(item.project || "").toLowerCase() === key;
+  }
+
+  function fillTopicCounts(items) {
+    document.querySelectorAll("[data-topic-count]").forEach(function (el) {
+      var slug = el.getAttribute("data-topic-count") || "";
+      var n = items.filter(function (item) { return itemMatchesTopic(item, slug); }).length;
+      el.textContent = String(n);
+    });
+  }
+
   function renderFeed(items) {
     var root = document.getElementById("activity-feed");
     if (!root) return;
+    var topic = topicQuery();
+    var list = topic ? items.filter(function (item) { return itemMatchesTopic(item, topic); }) : items;
     var html = '<div class="feed-label">Latest activity</div>';
-    sortActivity(items).forEach(function (item) {
+    if (!list.length) {
+      root.innerHTML = html + '<p class="muted">No activity yet.</p>';
+      return;
+    }
+    sortActivity(list).forEach(function (item) {
       var tags = topicTags(item, 3).map(function (t) {
         return '<span class="tag">' + esc(t) + "</span>";
       }).join("");
@@ -265,31 +305,56 @@
     root.innerHTML = html;
   }
 
-  function renderWeek(items, weekSlug) {
+  function renderTeaser(items) {
+    var root = document.getElementById("activity-teaser");
+    if (!root) return;
+    var head = root.querySelector(".feed-head");
+    var list = sortActivity(items).slice(0, 2);
+    var html = head ? head.outerHTML : "";
+    if (!list.length) {
+      root.innerHTML = html + '<p class="muted">No activity yet.</p>';
+      return;
+    }
+    list.forEach(function (item) {
+      html +=
+        '<article class="item">' +
+          "<h3><a href=\"" + esc(item.source_url) + "\">" + esc(displayTitle(item)) + "</a></h3>" +
+          "<p>" + esc(displaySummary(item)) + "</p>" +
+          '<div class="item-meta"><span class="proj">' + esc(item.project || "") + '</span><span class="time" title="' + esc(formatStamp(itemDate(item))) + '">' + esc(humanDate(itemDate(item))) + "</span></div>" +
+        "</article>";
+    });
+    root.innerHTML = html;
+  }
+
+  function renderWeek(allItems, weekSlug) {
     var parsed = parseWeekSlug(weekSlug);
-    items = itemsForWeek(items, weekSlug);
     if (parsed) {
       setText("week-range", formatWeekRange(parsed.year, parsed.week));
       document.querySelectorAll(".rail a[data-week]").forEach(function (a) {
-        var p = parseWeekSlug(a.getAttribute("data-week"));
+        var slug = a.getAttribute("data-week");
+        var p = parseWeekSlug(slug);
         if (!p) return;
+        var n = itemsForWeek(allItems, slug).length;
         var sub = a.querySelector(".sub");
         if (sub) sub.textContent = formatWeekRange(p.year, p.week);
+        var countEl = a.querySelector(".n");
+        if (countEl) countEl.textContent = String(n);
       });
     }
-    var cands = items.filter(isCandidate);
-    var prs = items.filter(function (i) { return i.source_type === "github_pull_request" && !isCandidate(i); });
-    var repos = items.filter(function (i) {
+    var items = itemsForWeek(allItems, weekSlug);
+    var cands = sortActivity(items.filter(isCandidate));
+    var prs = sortActivity(items.filter(function (i) { return i.source_type === "github_pull_request" && !isCandidate(i); }));
+    var repos = sortActivity(items.filter(function (i) {
       return !isCandidate(i) && (i.source_type === "github_repository" || i.source_type === "package_crate");
-    });
-    var docs = items.filter(function (i) { return i.source_type === "docs_page"; });
-    var n = cands.length;
-    var numWord = n === 0 ? "No" : n === 1 ? "One" : n === 2 ? "Two" : String(n);
+    }));
+    var docs = sortActivity(items.filter(function (i) { return i.source_type === "docs_page"; }));
+    var n = items.length;
     var lede =
       n === 0
-        ? "No new GitHub candidates this cycle. Seeded coverage still spans ZF FROST, secp256k1-zkp, Frostsnap, and Blockchain Commons."
-        : numWord + " GitHub candidate" + (n === 1 ? "" : "s") + " showed up. Seeded coverage still spans ZF FROST, secp256k1-zkp, Frostsnap, and Blockchain Commons.";
+        ? "Nothing new this ISO week."
+        : n + " item" + (n === 1 ? "" : "s") + " showed up.";
     setText("week-lede", lede);
+
 
     function rows(list) {
       return list.map(function (item) {
@@ -318,7 +383,7 @@
     var root = document.getElementById("week-groups");
     if (root) {
       root.innerHTML =
-        group("New candidates", cands) +
+        group("New this week", cands) +
         group("Pull requests", prs) +
         group("Repositories", repos) +
         group("Docs & writing", docs);
@@ -332,7 +397,7 @@
       return s && !GENERATED_SUMMARY.test(s);
     }) || mine[0];
     if (best) return displaySummary(best);
-    return "Public FROST-related project.";
+    return "Public project.";
   }
 
   function projectHref(project, items) {
@@ -343,6 +408,23 @@
     return "#";
   }
 
+  function sourceLinkLabel(item) {
+    if (item.source_type === "github_pull_request") {
+      var m = String(item.source_url || "").match(/\/pull\/(\d+)/);
+      return m ? "#" + m[1] : displayTitle(item);
+    }
+    var title = displayTitle(item);
+    if (item.source_type === "github_repository") {
+      var slash = title.lastIndexOf("/");
+      if (slash >= 0) return title.slice(slash + 1);
+    }
+    return title;
+  }
+
+  function sourceKind(item) {
+    return TYPE_DOT[item.source_type] || "repo";
+  }
+
 
   function renderAtlas(projects, items, sources) {
     var grid = document.getElementById("atlas-grid");
@@ -351,7 +433,7 @@
     var search = document.getElementById("atlas-search");
     if (!grid) return;
     var sourceCount = (sources.sources || []).length || items.length;
-    var preferred = ["bitcoin", "dkg", "hardware", "rust", "spec"];
+    var preferred = PREFERRED_CHIPS;
     var present = {};
     projects.forEach(function (p) {
       (p.tags || []).forEach(function (t) {
@@ -360,9 +442,11 @@
       });
     });
     var chipTags = preferred.filter(function (t) { return present[t]; });
-    Object.keys(present).forEach(function (t) {
-      if (chipTags.indexOf(t) === -1 && chipTags.length < 8) chipTags.push(t);
-    });
+    if (!EXPLICIT_CHIPS) {
+      Object.keys(present).forEach(function (t) {
+        if (chipTags.indexOf(t) === -1 && chipTags.length < 8) chipTags.push(t);
+      });
+    }
 
     var state = { q: "", tag: "all" };
 
@@ -400,13 +484,21 @@
         var nSrc = (p.sources || []).length || mine.length || 1;
         var when = p.activity_at || p.latest_discovered_at || p.discovered_at;
         var name = p.name;
-        if (name === "Onyekachukwu-Nweke/bitcoin-frost-wallet") name = "bitcoin-frost-wallet";
+        var links = mine.slice().sort(function (a, b) {
+          var oa = a.source_type === "github_pull_request" ? 0 : 1;
+          var ob = b.source_type === "github_pull_request" ? 0 : 1;
+          return oa - ob || String(sourceLinkLabel(a)).localeCompare(sourceLinkLabel(b));
+        }).slice(0, 8).map(function (i) {
+          return '<a class="card-src" href="' + esc(i.source_url) + '" title="' + esc(displayTitle(i)) + '">' +
+            '<i class="dot ' + sourceKind(i) + '"></i>' + esc(sourceLinkLabel(i)) + "</a>";
+        }).join("");
         return (
           '<article class="card">' +
             '<div class="card-top">' +
               "<h3><a href=\"" + esc(projectHref(p, items)) + "\">" + esc(name) + "</a></h3>" +
             "</div>" +
             '<p class="what">' + esc(projectSummary(p, items)) + "</p>" +
+            (links ? '<div class="card-sources">' + links + "</div>" : "") +
             '<div class="card-foot">' +
               '<span class="time">' + esc(humanDate(when)) + "</span>" +
               '<span class="src">' + nSrc + " source" + (nSrc === 1 ? "" : "s") + "</span>" +
@@ -445,35 +537,92 @@
     var list = (sources.sources || []).slice().sort(function (a, b) {
       return String(a.name || "").localeCompare(String(b.name || ""));
     });
-    root.innerHTML = list.map(function (s) {
-      return (
-        '<div class="source-row">' +
-          '<a class="name" href="' + esc(s.url) + '">' + esc(s.name) + "</a>" +
-          '<span class="proj">' + esc(s.project || "") + "</span>" +
-        "</div>"
-      );
-    }).join("");
+    var state = { q: "", kind: "all" };
+    var chips = document.getElementById("source-chips");
+    var search = document.getElementById("source-search");
+    var kinds = ["repo", "pr", "docs", "crate"];
+
+    if (chips) {
+      chips.innerHTML =
+        '<span class="pill filter on" data-kind="all" role="button" tabindex="0">All</span>' +
+        kinds.map(function (k) {
+          return '<span class="pill filter" data-kind="' + k + '" role="button" tabindex="0">' + k + "</span>";
+        }).join("");
+    }
+
+    function paint() {
+      var shown = list.filter(function (s) {
+        var hay = ((s.name || "") + " " + (s.project || "") + " " + (s.source_type || "")).toLowerCase();
+        if (state.q && hay.indexOf(state.q) === -1) return false;
+        if (state.kind !== "all" && (TYPE_DOT[s.source_type] || "repo") !== state.kind) return false;
+        return true;
+      });
+      root.innerHTML = shown.map(function (s) {
+        var kind = TYPE_DOT[s.source_type] || "repo";
+        return (
+          '<div class="source-row">' +
+            '<span class="kind"><i class="dot ' + kind + '"></i>' + esc(kind) + "</span>" +
+            '<a class="name" href="' + esc(s.url) + '">' + esc(s.name) + "</a>" +
+            '<span class="proj">' + esc(s.project || "") + "</span>" +
+          "</div>"
+        );
+      }).join("") || '<p class="muted">No sources match.</p>';
+    }
+
+    if (chips) {
+      chips.addEventListener("click", function (ev) {
+        var pill = ev.target.closest("[data-kind]");
+        if (!pill) return;
+        state.kind = pill.getAttribute("data-kind") || "all";
+        chips.querySelectorAll(".pill.filter").forEach(function (el) {
+          el.classList.toggle("on", el === pill);
+        });
+        paint();
+      });
+    }
+    if (search) {
+      search.addEventListener("input", function () {
+        state.q = (search.value || "").trim().toLowerCase();
+        paint();
+      });
+    }
+    paint();
   }
+
 
   function boot(feed, projects, sources) {
     var items = feed.items || [];
     fillRefresh(feed.generated_at);
     fillStartCounts(feed, projects, sources);
+    fillTopicCounts(items);
     var page = currentPage();
-    if (page === "home") renderFeed(items);
+    if (page === "home") renderTeaser(items);
+    if (page === "activity") renderFeed(items);
     if (page === "week") renderWeek(items, document.body.getAttribute("data-week") || "");
     if (page === "projects") renderAtlas(projects.projects || [], items, sources);
     if (page === "sources") renderSources(sources);
   }
 
+  function fetchJson(url, fallback) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) return fallback;
+      return r.json();
+    }).catch(function () { return fallback; });
+  }
+
   Promise.all([
-    fetch("/feed.json").then(function (r) { return r.json(); }),
-    fetch("/projects.json").then(function (r) { return r.json(); }),
-    fetch("/sources.json").then(function (r) { return r.json(); })
+    fetchJson("/feed.json", { items: [] }),
+    fetchJson("/projects.json", { projects: [] }),
+    fetchJson("/sources.json", { sources: [] }),
+    fetchJson("/watch.json", {})
   ]).then(function (res) {
+    applyWatch(res[3] || {});
+    if (!(res[0] && res[0].items)) {
+      throw new Error("feed missing");
+    }
     boot(res[0], res[1], res[2]);
   }).catch(function () {
-    var el = document.getElementById("activity-feed") || document.getElementById("atlas-grid") || document.getElementById("week-groups") || document.getElementById("source-list");
+    var el = document.getElementById("activity-feed") || document.getElementById("activity-teaser") || document.getElementById("atlas-grid") || document.getElementById("week-groups") || document.getElementById("source-list");
     if (el) el.innerHTML = '<p class="muted">Could not load live feed artifacts.</p>';
   });
 })();

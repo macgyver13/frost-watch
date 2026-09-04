@@ -1,24 +1,28 @@
 {{ define "main" }}
 {{- $isRoot := or (eq .RelPermalink "/topics/") (eq .RelPermalink "/topics") -}}
+{{- $watch := site.Data.watch | default dict -}}
+{{- $topics := $watch.topics | default slice -}}
 <div class="wrap">
   {{- if $isRoot -}}
   <div class="hero">
+    {{ partial "crumb.html" (dict "section" "Topics") }}
     <h1>Topics</h1>
-    <p class="lede">Working notes attached to the FROST Watch index.</p>
+    <p class="lede">{{ if gt (len $topics) 0 }}{{ len $topics }} tracked term{{ if ne (len $topics) 1 }}s{{ end }}. The name opens its working notes; the count opens filtered activity.{{ else }}Add topics in <code>config/watch.yaml</code> to create a topic ledger.{{ end }}</p>
   </div>
-  {{ partial "start-here.html" (dict "here" "topic") }}
-  <div class="prose">
-    <ul>
-      <li><a href="/topics/frost-silent-payments/">FROST + Silent Payments</a></li>
-    </ul>
-  </div>
+  {{ partial "topic-ledger.html" (dict "heading" false) }}
   {{- else -}}
   <div class="hero">
+    {{ partial "crumb.html" (dict "section" "Topics" "extra" .Title) }}
     <h1>{{ .Title }}</h1>
-    <p class="lede">Working notes on the overlap. Four surfaces to keep watching as send-to-silent-payment flows meet threshold signing.</p>
+    {{- with .Params.blurb }}<p class="lede">{{ . }}</p>{{ end }}
   </div>
-  {{ partial "start-here.html" (dict "here" "topic") }}
+  {{- if in .RelPermalink "frost-silent-payments" }}
   {{ partial "silent-payments.html" . }}
+  {{- else }}
+  <div class="prose">
+    {{ .Content }}
+  </div>
+  {{- end }}
   {{- end -}}
 </div>
 {{ end }}
