@@ -1,43 +1,11 @@
 {
   "projects": [
     {
-      "activity_at": "2026-09-05T05:30:56Z",
-      "discovered_at": "2026-09-05T06:25:59Z",
-      "first_seen": "2026-09-05T06:25:59Z",
-      "id": "deegalabs-konclave",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
-      "latest_discovered_at": "2026-09-05T06:25:59Z",
-      "name": "deegalabs/konclave",
-      "sources": [
-        "gh-search:github-frost-repo-discovery:deegalabs-konclave"
-      ],
-      "tags": [
-        "candidate",
-        "cryptography",
-        "dkg",
-        "frost",
-        "github",
-        "ironwood",
-        "local-first",
-        "multisig",
-        "orchard",
-        "privacy",
-        "react",
-        "repository-discovery",
-        "rust",
-        "self-custody",
-        "threshold-signatures",
-        "treasury",
-        "wasm",
-        "zcash"
-      ]
-    },
-    {
       "activity_at": "2026-09-03T14:00:56Z",
       "discovered_at": "2026-08-30T22:10:26Z",
       "first_seen": "2026-08-30T22:10:26Z",
       "id": "olegfomenko-chilldkg",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-30T22:10:26Z",
       "name": "olegfomenko/chilldkg",
       "sources": [
@@ -58,7 +26,7 @@
       "discovered_at": "2026-08-30T22:10:26Z",
       "first_seen": "2026-08-30T22:10:26Z",
       "id": "onyekachukwu-nweke-bitcoin-frost-wallet",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-30T22:10:26Z",
       "name": "Onyekachukwu-Nweke/bitcoin-frost-wallet",
       "sources": [
@@ -77,7 +45,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "zcash-foundation-frost",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Zcash Foundation FROST",
       "sources": [
@@ -100,7 +68,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "blockchain-commons",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Blockchain Commons",
       "sources": [
@@ -118,7 +86,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "schnorr-fun",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "schnorr_fun",
       "sources": [
@@ -136,7 +104,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "frostsnap",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Frostsnap",
       "sources": [
@@ -156,7 +124,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "skeptrune",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "Skeptrune",
       "sources": [
@@ -173,7 +141,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "secp256k1-zkp",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "secp256k1-zkp",
       "sources": [
@@ -194,7 +162,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "chilldkg-bip-frost-dkg",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "ChillDKG / BIP FROST DKG",
       "sources": [
@@ -213,7 +181,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "cmdruid-frost",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "cmdruid/frost",
       "sources": [
@@ -229,7 +197,7 @@
       "discovered_at": "2026-08-28T19:59:47Z",
       "first_seen": "2026-08-28T19:59:47Z",
       "id": "frost-secp256k1-tr",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-08-28T19:59:47Z",
       "name": "frost-secp256k1-tr",
       "sources": [
@@ -247,7 +215,7 @@
       "discovered_at": "2026-06-20T18:56:54.513Z",
       "first_seen": "2026-06-20T18:56:54.513Z",
       "id": "privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-06-20T18:56:54.513Z",
       "name": "Privately running wallet privacy heuristics on your own UTXOs without needing to run your own node",
       "sources": [
@@ -265,7 +233,7 @@
       "discovered_at": "2026-06-20T06:52:59.202Z",
       "first_seen": "2026-06-20T06:52:59.202Z",
       "id": "k-of-n-threshhold-key-generation-scheme-by-limited-shared-secrets",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-06-20T06:52:59.202Z",
       "name": "K-of-N threshhold key generation scheme by limited shared secrets",
       "sources": [
@@ -285,7 +253,7 @@
       "discovered_at": "2026-04-14T01:44:13.640Z",
       "first_seen": "2026-04-14T01:44:13.640Z",
       "id": "caas-a-continuous-adversarial-audit-standard-for-secp256k1-libraries",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-04-14T01:44:13.640Z",
       "name": "# CAAS: A Continuous Adversarial Audit Standard for secp256k1 Libraries",
       "sources": [
@@ -305,7 +273,7 @@
       "discovered_at": "2026-04-08T09:00:30.323Z",
       "first_seen": "2026-04-08T09:00:30.323Z",
       "id": "towards-a-k-of-n-lightning-network-node",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-04-08T09:00:30.323Z",
       "name": "Towards A K-of-N Lightning Network Node",
       "sources": [
@@ -327,7 +295,7 @@
       "discovered_at": "2026-03-20T00:48:07.648Z",
       "first_seen": "2026-03-20T00:48:07.648Z",
       "id": "ultrafastsecp256k1-v3-3",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2026-03-20T00:48:07.648Z",
       "name": "UltrafastSecp256k1 v3.3",
       "sources": [
@@ -348,7 +316,7 @@
       "discovered_at": "2025-07-15T00:38:32.952Z",
       "first_seen": "2025-07-15T00:38:32.952Z",
       "id": "chain-code-delegation-private-access-control-for-bitcoin-keys",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2025-07-15T00:38:32.952Z",
       "name": "Chain Code Delegation: Private Access Control for Bitcoin Keys",
       "sources": [
@@ -368,7 +336,7 @@
       "discovered_at": "2024-11-16T14:58:04.292Z",
       "first_seen": "2024-11-16T14:58:04.292Z",
       "id": "radpool-decentralised-mining-pool-with-futures-contracts-for-payouts",
-      "last_observed_activity": "2026-09-05T06:25:59Z",
+      "last_observed_activity": "2026-09-05T12:26:51Z",
       "latest_discovered_at": "2024-11-16T14:58:04.292Z",
       "name": "Radpool: Decentralised Mining Pool With Futures Contracts For Payouts",
       "sources": [

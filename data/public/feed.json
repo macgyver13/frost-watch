@@ -1,50 +1,7 @@
 {
   "description": "Public-source activity tracking for FROST and directly related dependencies. Inclusion is not endorsement, technical review, security assessment, production-readiness judgment, or a canonical roadmap.",
-  "generated_at": "2026-09-05T06:26:01Z",
+  "generated_at": "2026-09-05T12:26:53Z",
   "items": [
-    {
-      "activity_at": "2026-09-05T05:30:56Z",
-      "confidence": "github_search",
-      "discovered_at": "2026-09-05T06:25:59Z",
-      "event_time": "2026-09-05T06:25:59Z",
-      "event_type": "source_discovered",
-      "evidence": [
-        {
-          "query": "FROST archived:false",
-          "retrieved_at": "2026-09-05T06:25:59Z",
-          "url": "https://github.com/deegalabs/konclave"
-        }
-      ],
-      "id": "gh-search:github-frost-repo-discovery:deegalabs-konclave",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
-      "project": "deegalabs/konclave",
-      "source_type": "github_repository",
-      "source_url": "https://github.com/deegalabs/konclave",
-      "status": "candidate",
-      "summary": "The vault that decides together. A local-first, browser-native collective Zcash treasury using FROST threshold signatures. Private on the outside, transparent on the inside.",
-      "tags": [
-        "frost",
-        "github",
-        "candidate",
-        "repository-discovery",
-        "cryptography",
-        "dkg",
-        "ironwood",
-        "local-first",
-        "multisig",
-        "orchard",
-        "privacy",
-        "react",
-        "rust",
-        "self-custody",
-        "threshold-signatures",
-        "treasury",
-        "wasm",
-        "zcash"
-      ],
-      "title": "deegalabs/konclave"
-    },
     {
       "activity_at": "2026-09-03T14:00:56Z",
       "confidence": "github_search",
@@ -54,13 +11,13 @@
       "evidence": [
         {
           "query": "chilldkg archived:false",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/olegfomenko/chilldkg"
         }
       ],
       "id": "gh-search:github-chilldkg-repo-discovery:olegfomenko-chilldkg",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "olegfomenko/chilldkg",
       "source_type": "github_repository",
       "source_url": "https://github.com/olegfomenko/chilldkg",
@@ -86,13 +43,13 @@
       "evidence": [
         {
           "query": "chilldkg archived:false",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet"
         }
       ],
       "id": "gh-search:github-chilldkg-repo-discovery:onyekachukwu-nweke-bitcoin-frost-wallet",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Onyekachukwu-Nweke/bitcoin-frost-wallet",
       "source_type": "github_repository",
       "source_url": "https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet",
@@ -115,13 +72,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://frost.zfnd.org/index.html"
         }
       ],
       "id": "seed:frost-zfnd",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Zcash Foundation FROST",
       "source_type": "docs_page",
       "source_url": "https://frost.zfnd.org/index.html",
@@ -142,13 +99,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://developer.blockchaincommons.com/frost/"
         }
       ],
       "id": "seed:blockchain-commons-frost",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Blockchain Commons",
       "source_type": "docs_page",
       "source_url": "https://developer.blockchaincommons.com/frost/",
@@ -170,13 +127,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html"
         }
       ],
       "id": "seed:schnorr-fun-frost-docs",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "schnorr_fun",
       "source_type": "docs_page",
       "source_url": "https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html",
@@ -198,13 +155,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://frostsnap.com/docs/comparison/"
         }
       ],
       "id": "seed:frostsnap-comparison",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Frostsnap",
       "source_type": "docs_page",
       "source_url": "https://frostsnap.com/docs/comparison/",
@@ -225,13 +182,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/"
         }
       ],
       "id": "seed:skeptrune-dkg-production",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Skeptrune",
       "source_type": "docs_page",
       "source_url": "https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/",
@@ -252,13 +209,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/ZcashFoundation/frost"
         }
       ],
       "id": "seed:zcashfoundation-frost",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Zcash Foundation FROST",
       "source_type": "github_repository",
       "source_url": "https://github.com/ZcashFoundation/frost",
@@ -279,13 +236,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/frostsnap/frostsnap"
         }
       ],
       "id": "seed:frostsnap-frostsnap",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Frostsnap",
       "source_type": "github_repository",
       "source_url": "https://github.com/frostsnap/frostsnap",
@@ -307,13 +264,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp"
         }
       ],
       "id": "seed:blockstreamresearch-secp256k1-zkp",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "secp256k1-zkp",
       "source_type": "github_repository",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp",
@@ -335,13 +292,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/BlockstreamResearch/bip-frost-dkg"
         }
       ],
       "id": "seed:blockstreamresearch-bip-frost-dkg",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "ChillDKG / BIP FROST DKG",
       "source_type": "github_repository",
       "source_url": "https://github.com/BlockstreamResearch/bip-frost-dkg",
@@ -364,13 +321,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/cmdruid/frost"
         }
       ],
       "id": "seed:cmdruid-frost",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "cmdruid/frost",
       "source_type": "github_repository",
       "source_url": "https://github.com/cmdruid/frost",
@@ -390,13 +347,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138"
         }
       ],
       "id": "seed:secp256k1-zkp-pr-138",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "secp256k1-zkp",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138",
@@ -418,13 +375,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278"
         }
       ],
       "id": "seed:secp256k1-zkp-pr-278",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "secp256k1-zkp",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278",
@@ -446,13 +403,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://github.com/ZcashFoundation/frost/pull/730"
         }
       ],
       "id": "seed:zcash-frost-pr-730",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Zcash Foundation FROST",
       "source_type": "github_pull_request",
       "source_url": "https://github.com/ZcashFoundation/frost/pull/730",
@@ -473,13 +430,13 @@
       "event_type": "source_seeded",
       "evidence": [
         {
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://crates.io/crates/frost-secp256k1-tr"
         }
       ],
       "id": "seed:frost-secp256k1-tr",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "frost-secp256k1-tr",
       "source_type": "package_crate",
       "source_url": "https://crates.io/crates/frost-secp256k1-tr",
@@ -502,13 +459,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node/2625"
         }
       ],
       "id": "delving-search:delving-frost:2625",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Privately running wallet privacy heuristics on your own UTXOs without needing to run your own node",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node/2625",
@@ -531,13 +488,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/k-of-n-threshhold-key-generation-scheme-by-limited-shared-secrets/2623"
         }
       ],
       "id": "delving-search:delving-frost:2623",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "K-of-N threshhold key generation scheme by limited shared secrets",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/k-of-n-threshhold-key-generation-scheme-by-limited-shared-secrets/2623",
@@ -562,13 +519,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/caas-a-continuous-adversarial-audit-standard-for-secp256k1-libraries/2416"
         }
       ],
       "id": "delving-search:delving-frost:2416",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "# CAAS: A Continuous Adversarial Audit Standard for secp256k1 Libraries",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/caas-a-continuous-adversarial-audit-standard-for-secp256k1-libraries/2416",
@@ -593,13 +550,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395"
         }
       ],
       "id": "delving-search:delving-frost:2395",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Towards A K-of-N Lightning Network Node",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395",
@@ -626,13 +583,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/ultrafastsecp256k1-v3-3/2346"
         }
       ],
       "id": "delving-search:delving-frost:2346",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "UltrafastSecp256k1 v3.3",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/ultrafastsecp256k1-v3-3/2346",
@@ -658,13 +615,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837"
         }
       ],
       "id": "delving-search:delving-frost:1837",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Chain Code Delegation: Private Access Control for Bitcoin Keys",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837",
@@ -689,13 +646,13 @@
       "evidence": [
         {
           "query": "FROST",
-          "retrieved_at": "2026-09-05T06:25:59Z",
+          "retrieved_at": "2026-09-05T12:26:51Z",
           "url": "https://delvingbitcoin.org/t/radpool-decentralised-mining-pool-with-futures-contracts-for-payouts/1262"
         }
       ],
       "id": "delving-search:delving-frost:1262",
-      "last_seen_at": "2026-09-05T06:25:59Z",
-      "observed_at": "2026-09-05T06:25:59Z",
+      "last_seen_at": "2026-09-05T12:26:51Z",
+      "observed_at": "2026-09-05T12:26:51Z",
       "project": "Radpool: Decentralised Mining Pool With Futures Contracts For Payouts",
       "source_type": "delving_topic",
       "source_url": "https://delvingbitcoin.org/t/radpool-decentralised-mining-pool-with-futures-contracts-for-payouts/1262",
