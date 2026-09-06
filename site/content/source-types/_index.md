@@ -28,6 +28,7 @@ title: "Source types"
 
 ## github_repository
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)
