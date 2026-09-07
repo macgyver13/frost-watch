@@ -3,7 +3,14 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Mon, 07 Sep 2026 06:33:04 +0000</lastBuildDate>
+<lastBuildDate>Mon, 07 Sep 2026 12:33:57 +0000</lastBuildDate>
+<item>
+<title>0xcasuwu/subfrost-bridge-security</title>
+<link>https://github.com/0xcasuwu/subfrost-bridge-security</link>
+<guid isPermaLink="false">gh-search:github-frost-repo-discovery:0xcasuwu-subfrost-bridge-security</guid>
+<description>One Key, Two Chains — how SUBFROST secures a Bitcoin-Ethereum bridge with a single FROST 6-of-9 threshold key and no privileged account on either chain</description>
+<pubDate>Mon, 07 Sep 2026 12:33:55 +0000</pubDate>
+</item>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>

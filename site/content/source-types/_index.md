@@ -28,6 +28,7 @@ title: "Source types"
 
 ## github_repository
 
+- [0xcasuwu/subfrost-bridge-security](https://github.com/0xcasuwu/subfrost-bridge-security)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)

@@ -24,6 +24,7 @@ title: "Tags"
 
 ## candidate
 
+- [0xcasuwu/subfrost-bridge-security](https://github.com/0xcasuwu/subfrost-bridge-security)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [Privately running wallet privacy heuristics on your own UTXOs without needing to run your own node](https://delvingbitcoin.org/t/privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node/2625)
@@ -71,6 +72,7 @@ title: "Tags"
 
 ## frost
 
+- [0xcasuwu/subfrost-bridge-security](https://github.com/0xcasuwu/subfrost-bridge-security)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)
@@ -97,6 +99,7 @@ title: "Tags"
 
 ## github
 
+- [0xcasuwu/subfrost-bridge-security](https://github.com/0xcasuwu/subfrost-bridge-security)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
@@ -151,6 +154,7 @@ title: "Tags"
 
 ## repository-discovery
 
+- [0xcasuwu/subfrost-bridge-security](https://github.com/0xcasuwu/subfrost-bridge-security)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
