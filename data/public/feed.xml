@@ -3,14 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Mon, 07 Sep 2026 00:32:10 +0000</lastBuildDate>
-<item>
-<title>deegalabs/konclave</title>
-<link>https://github.com/deegalabs/konclave</link>
-<guid isPermaLink="false">gh-search:github-frost-repo-discovery:deegalabs-konclave</guid>
-<description>The vault that decides together. A local-first, browser-native collective Zcash treasury using FROST threshold signatures. Private on the outside, transparent on the inside.</description>
-<pubDate>Sun, 06 Sep 2026 12:30:22 +0000</pubDate>
-</item>
+<lastBuildDate>Mon, 07 Sep 2026 06:33:04 +0000</lastBuildDate>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>
