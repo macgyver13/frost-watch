@@ -1,11 +1,11 @@
-baseURL = "https://example.com/"
+baseURL = "https://frost-watch.pages.dev/"
 locale = "en-us"
-title = "Example Watch"
+title = "FROST Watch"
 enableRobotsTXT = true
 disablePathToLower = true
 
 [params]
-  description = "Public activity on tracked sources."
+  description = "Public-source activity tracking for FROST and directly related dependencies."
 
 [markup]
   [markup.goldmark]

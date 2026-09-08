@@ -16,9 +16,13 @@
     <h1>{{ .Title }}</h1>
     {{- with .Params.blurb }}<p class="lede">{{ . }}</p>{{ end }}
   </div>
+  {{- if in .RelPermalink "frost-silent-payments" }}
+  {{ partial "silent-payments.html" . }}
+  {{- else }}
   <div class="prose">
     {{ .Content }}
   </div>
+  {{- end }}
   {{- end -}}
 </div>
 {{ end }}
