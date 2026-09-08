@@ -2,4 +2,4 @@
 title: "Topics"
 ---
 
-Add optional topic tiles in config/watch.yaml.
+- [FROST + Silent Payments](/topics/frost-silent-payments/)
