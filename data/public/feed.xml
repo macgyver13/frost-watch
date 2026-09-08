@@ -3,21 +3,7 @@
 <title>FROST Watch</title>
 <link>https://frost-watch.pages.dev/</link>
 <description>Public-source activity tracking for FROST and directly related dependencies.</description>
-<lastBuildDate>Tue, 08 Sep 2026 00:35:43 +0000</lastBuildDate>
-<item>
-<title>deegalabs/konclave</title>
-<link>https://github.com/deegalabs/konclave</link>
-<guid isPermaLink="false">gh-search:github-frost-repo-discovery:deegalabs-konclave</guid>
-<description>The vault that decides together. A local-first, browser-native collective Zcash treasury using FROST threshold signatures. Private on the outside, transparent on the inside.</description>
-<pubDate>Tue, 08 Sep 2026 00:35:41 +0000</pubDate>
-</item>
-<item>
-<title>orklabs/spark-swift-sdk</title>
-<link>https://github.com/orklabs/spark-swift-sdk</link>
-<guid isPermaLink="false">gh-search:github-frost-repo-discovery:orklabs-spark-swift-sdk</guid>
-<description>Swift SDK for the Spark protocol</description>
-<pubDate>Tue, 08 Sep 2026 00:35:41 +0000</pubDate>
-</item>
+<lastBuildDate>Tue, 08 Sep 2026 06:36:36 +0000</lastBuildDate>
 <item>
 <title>olegfomenko/chilldkg</title>
 <link>https://github.com/olegfomenko/chilldkg</link>
