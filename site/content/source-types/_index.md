@@ -25,41 +25,28 @@ title: "Source types"
 
 ## github_pull_request
 
-- [GoreeCloud/goreecloud-launcher #82](https://github.com/GoreeCloud/goreecloud-launcher/pull/82)
-- [areveur51/ExitTrace #32](https://github.com/areveur51/ExitTrace/pull/32)
-- [TotalControlAdmin/TCA3PluginRepo #115](https://github.com/TotalControlAdmin/TCA3PluginRepo/pull/115)
-- [TheMostafaOsamaDev/Riwaq-Reader #78](https://github.com/TheMostafaOsamaDev/Riwaq-Reader/pull/78)
-- [makenaford/liferay-sites-design-system #65](https://github.com/makenaford/liferay-sites-design-system/pull/65)
-- [BryanRalston/times-tables #42](https://github.com/BryanRalston/times-tables/pull/42)
-- [Li-Sanze/sopify-tab #17](https://github.com/Li-Sanze/sopify-tab/pull/17)
-- [mininet-labs/Mininet #332](https://github.com/mininet-labs/Mininet/pull/332)
-- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
-- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
-- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
-- [Ddscully/dlt-dbt-duckdb-evidence #27](https://github.com/Ddscully/dlt-dbt-duckdb-evidence/pull/27)
 - [olegfomenko/chilldkg #5](https://github.com/olegfomenko/chilldkg/pull/5)
 - [privkeyio/keep #963](https://github.com/privkeyio/keep/pull/963)
 - [btcsuite/btcd #2590](https://github.com/btcsuite/btcd/pull/2590)
 - [bitcoin/bips #2227](https://github.com/bitcoin/bips/pull/2227)
 - [BlockstreamResearch/bip-frost-dkg #158](https://github.com/BlockstreamResearch/bip-frost-dkg/pull/158)
-- [block-core/angor-hub #42](https://github.com/block-core/angor-hub/pull/42)
 - [BlockstreamResearch/bip-frost-dkg #139](https://github.com/BlockstreamResearch/bip-frost-dkg/pull/139)
 - [ArkLabsHQ/enclave #139](https://github.com/ArkLabsHQ/enclave/pull/139)
 - [bitcoin/bips #2070](https://github.com/bitcoin/bips/pull/2070)
+- [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 - [zcash/zips #895](https://github.com/zcash/zips/pull/895)
+- [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
+- [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
 
 ## github_repository
 
-- [kenny25-gif/annies-frosting-delight](https://github.com/kenny25-gif/annies-frosting-delight)
-- [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)
-- [frostsnap/frostsnap](https://github.com/frostsnap/frostsnap)
-- [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
-- [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
-- [cmdruid/frost](https://github.com/cmdruid/frost)
-- [Hearingimpaired-conversion320/DSH-Transparent-UI-Plugin](https://github.com/Hearingimpaired-conversion320/DSH-Transparent-UI-Plugin)
-- [Indianblanketcontinuingeducation88/authentik-frosted-theme](https://github.com/Indianblanketcontinuingeducation88/authentik-frosted-theme)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
+- [cmdruid/frost](https://github.com/cmdruid/frost)
+- [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
+- [frostsnap/frostsnap](https://github.com/frostsnap/frostsnap)
+- [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)
+- [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
 
 ## package_crate
 
