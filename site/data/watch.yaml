@@ -1,9 +1,12 @@
-name: Example Watch
-base_url: https://example.com/
-description: Public activity on tracked sources.
-default_tag: example
+name: FROST Watch
+base_url: https://frost-watch.pages.dev/
+description: Public-source activity tracking for FROST and directly related dependencies.
+default_tag: frost
 preferred_chips:
-  - docs
+  - bitcoin
+  - dkg
+  - hardware
+  - rust
   - spec
 hidden_tags:
   - github
@@ -15,12 +18,23 @@ hidden_tags:
   - delving
   - topic-discovery
 relevance:
-  always_match: []   # accept if any of these appear in description/topics/title/excerpt
-  required_any: []   # if non-empty, one of these must appear; empty = no required term
-  context_any: []    # if required_any is set AND this is non-empty, also need one of these
+  always_match:
+    - frost
+    - chilldkg
+    - roast
+    - threshold-schnorr
+  required_any:
+    - frost
+    - chilldkg
+    - roast
+    - threshold-schnorr
+  context_any: []
+topics:
+  - title: FROST + Silent Payments
+    slug: frost-silent-payments
+    blurb: Working notes on the overlap as send-to-silent-payment flows meet threshold signing.
+    note: Four surfaces — DLEQ shares, hardware UX, epoch consistency, PSBT/group-config.
 discovered_after: ""  # ISO date; drop live hits and ignore GitHub created_at before this
 serving:
   mode: static          # static | service
   service_url: ""       # https://<worker>.<subdomain>.workers.dev/ — required when mode is service
-topics: []           # optional extra Start-here tiles: [{title, slug, blurb, note}]
-
