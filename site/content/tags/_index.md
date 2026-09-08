@@ -8,6 +8,7 @@ title: "Tags"
 
 ## bitcoin
 
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
 - [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
 - [BlockstreamResearch/secp256k1-zkp #138](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/138)
@@ -24,6 +25,8 @@ title: "Tags"
 
 ## candidate
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [Privately running wallet privacy heuristics on your own UTXOs without needing to run your own node](https://delvingbitcoin.org/t/privately-running-wallet-privacy-heuristics-on-your-own-utxos-without-needing-to-run-your-own-node/2625)
@@ -42,6 +45,7 @@ title: "Tags"
 
 ## cryptography
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [Towards A K-of-N Lightning Network Node](https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395)
 
 ## delving
@@ -56,6 +60,7 @@ title: "Tags"
 
 ## dkg
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [Taking DKG from papers to production](https://www.skeptrune.com/posts/taking-dkg-from-papers-to-production/)
 - [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
 
@@ -71,6 +76,8 @@ title: "Tags"
 
 ## frost
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)
@@ -97,6 +104,8 @@ title: "Tags"
 
 ## github
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
@@ -114,14 +123,31 @@ title: "Tags"
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
 - [cmdruid/frost](https://github.com/cmdruid/frost)
 
+## ios
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
+
+## ironwood
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
 ## libbitcoin
 
 - [UltrafastSecp256k1 v3.3](https://delvingbitcoin.org/t/ultrafastsecp256k1-v3-3/2346)
 
 ## lightning
 
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [K-of-N threshhold key generation scheme by limited shared secrets](https://delvingbitcoin.org/t/k-of-n-threshhold-key-generation-scheme-by-limited-shared-secrets/2623)
 - [Towards A K-of-N Lightning Network Node](https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395)
+
+## local-first
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
+## macos
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 
 ## merged
 
@@ -131,12 +157,21 @@ title: "Tags"
 
 - [Radpool: Decentralised Mining Pool With Futures Contracts For Payouts](https://delvingbitcoin.org/t/radpool-decentralised-mining-pool-with-futures-contracts-for-payouts/1262)
 
+## multisig
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
+## orchard
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
 ## package
 
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
 
 ## privacy
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [Chain Code Delegation: Private Access Control for Bitcoin Keys](https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837)
 
 ## pull-request
@@ -145,17 +180,24 @@ title: "Tags"
 - [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
 - [ZcashFoundation/frost #730](https://github.com/ZcashFoundation/frost/pull/730)
 
+## react
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
 ## reference
 
 - [FROST reference](https://frost.zfnd.org/index.html)
 
 ## repository-discovery
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 
 ## rust
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [schnorr_fun FROST docs](https://docs.rs/schnorr_fun/latest/schnorr_fun/frost/index.html)
 - [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost)
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
@@ -164,6 +206,10 @@ title: "Tags"
 
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 
+## sdk
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
+
 ## secp256k1
 
 - [BlockstreamResearch/secp256k1-zkp](https://github.com/BlockstreamResearch/secp256k1-zkp)
@@ -171,10 +217,26 @@ title: "Tags"
 - [BlockstreamResearch/secp256k1-zkp #278](https://github.com/BlockstreamResearch/secp256k1-zkp/pull/278)
 - [frost-secp256k1-tr](https://crates.io/crates/frost-secp256k1-tr)
 
+## self-custody
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
+## spark
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
+
 ## spec
 
 - [FROST reference](https://frost.zfnd.org/index.html)
 - [BlockstreamResearch/bip-frost-dkg](https://github.com/BlockstreamResearch/bip-frost-dkg)
+
+## swift
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
+
+## swiftpm
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 
 ## taproot
 
@@ -185,7 +247,12 @@ title: "Tags"
 
 ## threshold-signatures
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
+
+## threshold-signing
+
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 
 ## topic-discovery
 
@@ -197,8 +264,21 @@ title: "Tags"
 - [Chain Code Delegation: Private Access Control for Bitcoin Keys](https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837)
 - [Radpool: Decentralised Mining Pool With Futures Contracts For Payouts](https://delvingbitcoin.org/t/radpool-decentralised-mining-pool-with-futures-contracts-for-payouts/1262)
 
+## treasury
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
 ## wallet
 
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [Towards A K-of-N Lightning Network Node](https://delvingbitcoin.org/t/towards-a-k-of-n-lightning-network-node/2395)
 - [Chain Code Delegation: Private Access Control for Bitcoin Keys](https://delvingbitcoin.org/t/chain-code-delegation-private-access-control-for-bitcoin-keys/1837)
+
+## wasm
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+
+## zcash
+
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
 

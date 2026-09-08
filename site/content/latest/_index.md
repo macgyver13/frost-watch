@@ -2,6 +2,8 @@
 title: "Latest activity"
 ---
 
+- [deegalabs/konclave](https://github.com/deegalabs/konclave)
+- [orklabs/spark-swift-sdk](https://github.com/orklabs/spark-swift-sdk)
 - [olegfomenko/chilldkg](https://github.com/olegfomenko/chilldkg)
 - [Onyekachukwu-Nweke/bitcoin-frost-wallet](https://github.com/Onyekachukwu-Nweke/bitcoin-frost-wallet)
 - [FROST reference](https://frost.zfnd.org/index.html)
