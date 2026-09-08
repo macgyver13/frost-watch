@@ -39,7 +39,17 @@ python3 scripts/verify_public_artifacts.py
 hugo --source site --minify
 ```
 
-Live collectors: `github_repository_searches`, `github_pull_request_searches`, `delving_topic_searches`. A seeded parent repo does not hide matching PRs. Discovery dates on existing items stay put; activity moves if GitHub or Delving is newer.
+`python3 scripts/build_seed_feed.py` refreshes seeded GitHub repo/PR
+timestamps and runs live collectors
+(`github_repository_searches`, `github_pull_request_searches`,
+`delving_topic_searches`, `delving_category_listings`). Repository search
+does not see PRs inside an already-seeded repo; PR search does. Each
+collector emits **candidate** `source_discovered` items alongside seeds.
+A candidate is a search or category hit that passed `watch.yaml`
+`relevance`; it is not yet in the accepted `seeded_sources` catalog.
+Seeded GitHub repos/PRs take live `created_at` as `discovered_at`;
+activity moves if GitHub or Delving is newer. Docs, crates, and
+`--seed-only` keep seed or first-seen discovery.
 
 Seed-only (no GitHub or Delving HTTP):
 
