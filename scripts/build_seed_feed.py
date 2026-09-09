@@ -51,6 +51,7 @@ EMPTY_WATCH = {
     "hidden_tags": [],
     "relevance": {"always_match": [], "required_any": [], "context_any": []},
     "topics": [],
+    "discovered_after": "",
 }
 
 
@@ -103,6 +104,7 @@ def normalize_watch(data: dict | None) -> dict:
         "hidden_tags": list(data.get("hidden_tags") or []),
         "relevance": normalize_relevance(data.get("relevance")),
         "topics": list(data.get("topics") or []),
+        "discovered_after": optional_iso(data.get("discovered_after")) or "",
     }
     if not watch["base_url"].endswith("/"):
         watch["base_url"] += "/"
@@ -118,7 +120,7 @@ def watch_from_cfg(cfg: dict) -> dict:
         payload["base_url"] = cfg["base_url"]
     if cfg.get("description") or cfg.get("scope_note"):
         payload["description"] = cfg.get("description") or cfg.get("scope_note")
-    for key in ("default_tag", "preferred_chips", "hidden_tags", "relevance", "topics"):
+    for key in ("default_tag", "preferred_chips", "hidden_tags", "relevance", "topics", "discovered_after"):
         if key in cfg:
             payload[key] = cfg[key]
     return normalize_watch(payload)
@@ -399,6 +401,24 @@ def later_iso(*values: str | None) -> str | None:
     return max(stamps) if stamps else None
 
 
+def iso_sort_key(value: str | None) -> datetime | None:
+    dt = parse_iso(value)
+    if dt is None:
+        return None
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def discovery_too_old(created_at: str | None, watch: dict | None) -> bool:
+    """True when created_at is strictly before watch.discovered_after."""
+    floor = optional_iso((watch or {}).get("discovered_after"))
+    left = iso_sort_key(created_at)
+    right = iso_sort_key(floor)
+    return bool(left and right and left < right)
+
+
+
 def live_seed_github(entry: dict, kind: str, github_json_fetcher) -> tuple[str | None, str | None]:
     """Return (created_at, activity_at) from GitHub for a seeded repo or PR.
 
@@ -451,6 +471,40 @@ def repo_excluded_by_query_terms(repo: dict, query: str) -> bool:
         " ".join(str(topic) for topic in repo.get("topics", [])),
     ]
     return excluded_by_query_terms(" ".join(haystack_parts), query)
+
+
+SOURCE_WATCH_TOKEN = "source-watch"
+
+
+def mentions_source_watch(*parts: object) -> bool:
+    """True when any part contains the engine repo name (origin or a fork)."""
+    token = SOURCE_WATCH_TOKEN
+    return any(token in str(part or "").lower() for part in parts)
+
+
+def repo_is_source_watch(repo: dict) -> bool:
+    topics = " ".join(str(topic) for topic in repo.get("topics") or [])
+    return mentions_source_watch(
+        repo.get("full_name"),
+        repo.get("name"),
+        repo.get("html_url"),
+        repo.get("description"),
+        topics,
+    )
+
+
+def pr_is_source_watch(hit: dict) -> bool:
+    return mentions_source_watch(pr_haystack(hit))
+
+
+def topic_is_source_watch(topic: dict) -> bool:
+    return mentions_source_watch(
+        topic.get("title"),
+        topic.get("slug"),
+        topic.get("excerpt") or topic.get("blurb"),
+        " ".join(discourse_tag_names(topic.get("tags"))),
+    )
+
 
 
 
@@ -557,6 +611,8 @@ def build_seeded_item(
     seed_discovered = optional_iso(entry.get("discovered_at"))
     seed_activity = optional_iso(entry.get("activity_at"))
     live_created, live_activity = live_seed_github(entry, kind, github_json_fetcher)
+    if discovery_too_old(live_created, watch):
+        live_created = None
     discovered_at = live_created or seed_discovered or discovery_time(old_item, observed_at)
     activity_at = later_iso(seed_activity, live_activity) or item_activity_at({
         **old_item,
@@ -1007,7 +1063,11 @@ def build_items(
                 continue
             if repo_excluded_by_query_terms(repo, query):
                 continue
+            if repo_is_source_watch(repo):
+                continue
             if not repo_matches_relevance_rules(repo, resolved):
+                continue
+            if discovery_too_old(repo.get("created_at"), resolved):
                 continue
             seen_repos.add(repo_key)
 
@@ -1050,7 +1110,11 @@ def build_items(
                 continue
             if pr_excluded_by_query_terms(hit, query):
                 continue
+            if pr_is_source_watch(hit):
+                continue
             if not pr_matches_relevance_rules(hit, resolved):
+                continue
+            if discovery_too_old(hit.get("created_at"), resolved):
                 continue
             match = PR_URL_RE.match(url)
             repo_full = f"{match.group(1)}/{match.group(2)}" if match else ""
@@ -1092,7 +1156,11 @@ def build_items(
         query = str(collector.get("query") or "")
         if query and excluded_by_query_terms(haystack, query):
             return
+        if topic_is_source_watch(topic):
+            return
         if not topic_matches_relevance_rules(topic, resolved):
+            return
+        if discovery_too_old(topic.get("created_at"), resolved):
             return
         seen_topics.add(tid)
         item, source, project = build_delving_topic_item(

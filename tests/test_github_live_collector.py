@@ -233,6 +233,44 @@ class GitHubLiveCollectorTests(unittest.TestCase):
             finally:
                 build_seed_feed.OUT = old_out
 
+    def test_repo_search_drops_source_watch_fork_and_mentions(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                _empty_artifacts(out)
+                fork = {
+                    "full_name": "alice/source-watch",
+                    "html_url": "https://github.com/alice/source-watch",
+                    "description": "Fork of the watch template",
+                    "updated_at": "2026-09-08T12:00:00Z",
+                    "topics": ["bitcoin"],
+                }
+                mention = {
+                    "full_name": "example/bip360-notes",
+                    "html_url": "https://github.com/example/bip360-notes",
+                    "description": "Notes that mention source-watch as a tracker",
+                    "updated_at": "2026-09-08T13:00:00Z",
+                    "topics": ["docs"],
+                }
+
+                def fake_fetch(_query: str) -> list[dict[str, object]]:
+                    return [fork, mention, ATLAS_SPEC]
+
+                items, _projects, sources = build_seed_feed.build_items(
+                    _collector_cfg(),
+                    github_repo_fetcher=fake_fetch,
+                    watch={},
+                )
+                urls = {item["source_url"] for item in items}
+                self.assertEqual(urls, {ATLAS_SPEC["html_url"]})
+                self.assertNotIn("gh-search:repo-discovery:alice-source-watch", sources)
+                self.assertNotIn("gh-search:repo-discovery:example-bip360-notes", sources)
+            finally:
+                build_seed_feed.OUT = old_out
+
+
     def test_github_repository_search_results_become_feed_items(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp)
@@ -499,6 +537,38 @@ class GitHubLiveCollectorTests(unittest.TestCase):
             finally:
                 build_seed_feed.OUT = old_out
 
+    def test_pr_search_drops_source_watch_repo(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                _empty_artifacts(out)
+                engine_pr = {
+                    **SEEDSIGNER_PR,
+                    "html_url": "https://github.com/macgyver13/source-watch/pull/12",
+                    "title": "Silent Payments preview rebase",
+                    "body": "Rebuild preview/silent-payments.",
+                    "number": 12,
+                    "pull_request": {
+                        "html_url": "https://github.com/macgyver13/source-watch/pull/12",
+                    },
+                }
+                items, _projects, sources = build_seed_feed.build_items(
+                    _pr_collector_cfg(),
+                    github_pr_fetcher=lambda _q: [engine_pr, SEEDSIGNER_PR],
+                    watch=SP_WATCH,
+                )
+                self.assertEqual(len(items), 1)
+                self.assertEqual(items[0]["source_url"], SEEDSIGNER_PR["html_url"])
+                self.assertNotIn(
+                    "gh-pr-search:pr-discovery:macgyver13-source-watch-12",
+                    sources,
+                )
+            finally:
+                build_seed_feed.OUT = old_out
+
+
     def test_ensure_pr_search_query_is_idempotent(self) -> None:
         self.assertEqual(build_seed_feed.ensure_pr_search_query("is:pr"), "is:pr")
         self.assertEqual(
@@ -509,6 +579,72 @@ class GitHubLiveCollectorTests(unittest.TestCase):
             build_seed_feed.ensure_pr_search_query('"silent payments"'),
             '"silent payments" is:pr',
         )
+
+    def test_repo_search_before_discovered_after_is_dropped(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                _empty_artifacts(out)
+                old_lib = {
+                    "full_name": "21-DOT-DEV/swift-secp256k1",
+                    "html_url": "https://github.com/21-DOT-DEV/swift-secp256k1",
+                    "description": "secp256k1 bindings with BIP352 helpers",
+                    "created_at": "2020-07-05T07:26:05Z",
+                    "updated_at": "2026-08-29T12:00:00Z",
+                    "topics": ["bip352", "bitcoin"],
+                }
+                new_lib = {
+                    "full_name": "cygnet3/rust-silentpayments",
+                    "html_url": "https://github.com/cygnet3/rust-silentpayments",
+                    "description": "Silent Payments library",
+                    "created_at": "2023-07-11T19:41:51Z",
+                    "updated_at": "2026-08-29T13:00:00Z",
+                    "topics": ["silent-payments"],
+                }
+
+                def fake_fetch(_query: str) -> list[dict[str, object]]:
+                    return [old_lib, new_lib]
+
+                items, _projects, _sources = build_seed_feed.build_items(
+                    _collector_cfg(query="bip352 archived:false"),
+                    github_repo_fetcher=fake_fetch,
+                    watch={**SP_WATCH, "discovered_after": "2022-03-13"},
+                )
+                self.assertEqual(len(items), 1)
+                self.assertEqual(items[0]["source_url"], new_lib["html_url"])
+                self.assertEqual(items[0]["discovered_at"], "2023-07-11T19:41:51Z")
+            finally:
+                build_seed_feed.OUT = old_out
+
+    def test_pr_search_before_discovered_after_is_dropped(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            old_out = build_seed_feed.OUT
+            build_seed_feed.OUT = out
+            try:
+                _empty_artifacts(out)
+                old_pr = {
+                    **SEEDSIGNER_PR,
+                    "html_url": "https://github.com/example/wallet/pull/9",
+                    "title": "Silent Payments prototype",
+                    "body": "Early silent payments experiment.",
+                    "number": 9,
+                    "created_at": "2021-04-01T00:00:00Z",
+                    "updated_at": "2021-04-02T00:00:00Z",
+                    "pull_request": {"html_url": "https://github.com/example/wallet/pull/9"},
+                }
+                items, _projects, _sources = build_seed_feed.build_items(
+                    _pr_collector_cfg(),
+                    github_pr_fetcher=lambda _q: [old_pr, SEEDSIGNER_PR],
+                    watch={**SP_WATCH, "discovered_after": "2022-03-13"},
+                )
+                self.assertEqual(len(items), 1)
+                self.assertEqual(items[0]["source_url"], SEEDSIGNER_PR["html_url"])
+            finally:
+                build_seed_feed.OUT = old_out
+
 
 
 
