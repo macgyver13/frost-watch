@@ -95,6 +95,12 @@ def _frost_collectors(kind: str) -> list[dict]:
     return [c for c in collectors if "frost" in str(c.get("id") or "").lower() and "chilldkg" not in str(c.get("id") or "").lower()]
 
 
+def _watch() -> dict:
+    data = build_seed_feed.parse_yaml(build_seed_feed.WATCH_CONFIG)
+    data["serving"] = {"mode": "static", "service_url": ""}
+    return build_seed_feed.normalize_watch(data)
+
+
 def _cfg() -> dict:
     return {
         "seeded_sources": {},
@@ -127,7 +133,7 @@ class FrostWatchRelevanceTests(unittest.TestCase):
                     _cfg(),
                     github_repo_fetcher=lambda _q: [FROSTING_REPO, FROSTED_REPO, FROST_REPO],
                     github_pr_fetcher=lambda _q: [FROSTED_PR, FROSTING_PR, FROST_PR],
-                    watch=build_seed_feed.load_watch(),
+                    watch=_watch(),
                 )
                 urls = {item["source_url"] for item in items}
                 self.assertIn(FROST_REPO["html_url"], urls)

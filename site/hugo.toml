@@ -1,4 +1,4 @@
-baseURL = "https://frost-watch.pages.dev/"
+baseURL = "https://frost-watch.macgyver-dev.workers.dev/"
 locale = "en-us"
 title = "FROST Watch"
 enableRobotsTXT = true
@@ -6,7 +6,7 @@ disablePathToLower = true
 
 [params]
   description = "Public-source activity tracking for FROST and directly related dependencies."
-  serving_mode = "static"
+  serving_mode = "service"
 
 [markup]
   [markup.goldmark]
