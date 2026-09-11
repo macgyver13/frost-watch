@@ -1,5 +1,5 @@
 {
-  "name": "source-watch",
+  "name": "frost-watch",
   "private": true,
   "type": "module",
   "scripts": {

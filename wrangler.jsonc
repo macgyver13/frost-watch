@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "source-watch",
+  "name": "frost-watch",
   "main": "service/src/index.js",
   "compatibility_date": "2026-09-09",
   "build": { "command": "hugo --source site --minify" },
@@ -23,7 +23,7 @@
     ]
   },
   "d1_databases": [
-    { "binding": "DB", "database_name": "source-watch", "database_id": "00000000-0000-0000-0000-000000000000" }
+    { "binding": "DB", "database_name": "frost-watch", "database_id": "9f0672f5-0a94-4414-afc9-69c440cf4640" }
   ],
   "ratelimits": [
     {
@@ -34,7 +34,7 @@
   ],
   "triggers": { "crons": ["17 * * * *"] },
   "vars": {
-    "GITHUB_DISPATCH_REPO": "",
+    "GITHUB_DISPATCH_REPO": "macgyver13/frost-watch",
     "GITHUB_DISPATCH_WORKFLOW": "refresh-feed.yml",
     "GITHUB_DISPATCH_REF": "main"
   }
