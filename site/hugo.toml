@@ -6,6 +6,7 @@ disablePathToLower = true
 
 [params]
   description = "Public-source activity tracking for FROST and directly related dependencies."
+  serving_mode = "static"
 
 [markup]
   [markup.goldmark]

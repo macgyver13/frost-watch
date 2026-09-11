@@ -24,6 +24,8 @@ Primary artifacts:
 
 The Hugo site under `site/` renders the public website from these artifacts.
 
+This instance runs in **service mode**: the collector ingests into Cloudflare D1. Do not publish feed JSON to Pages. First deploy, secrets, and `/admin`: `AGENTS.md` **Service mode**. Hourly refresh is `.github/workflows/refresh-feed.yml` via Worker cron or `workflow_dispatch`.
+
 ## Scope
 
 This project aggregates public source metadata and activity. Inclusion is not endorsement, technical review, security assessment, production-readiness judgment, or a canonical roadmap.
@@ -66,14 +68,34 @@ Scheduled publish (`scripts/update_frost_watch.py`) already runs this pipeline a
 python3 -m unittest discover -s tests -v
 ```
 
-## Cloudflare Pages
+## Cloudflare Pages (static mode)
 
 - Root directory: `site`
 - Build command: `hugo --minify`
 - Build output directory: `public`
 - Environment: `HUGO_VERSION=0.164.0`
 
-Pages builds Hugo from `site/`. Feed artifacts in `site/static/` come from the Python pipeline above.
+
+Pages builds Hugo from `site/`. Feed artifacts in `site/static/` come from the Python pipeline above. Do not create a Worker for a `serving.mode: static` instance.
+
+## Cloudflare Worker (service mode)
+
+Set `serving.mode: service` in `config/watch.yaml`. The Worker serves Hugo assets, live `/feed.json` from D1, and `/admin`. The Python collector POSTs into the service instead of writing `site/static/`.
+
+Numbered first deploy, secret matrix, and operator notes: `AGENTS.md` **Service mode**. Short path:
+
+1. `npx wrangler d1 create source-watch` → paste `database_id` into `wrangler.jsonc`.
+2. `npx wrangler d1 migrations apply source-watch --remote`
+3. `npx wrangler secret put ADMIN_TOKEN` and `INGEST_TOKEN` (collector env `SOURCE_WATCH_INGEST_TOKEN` must be the **same value** as `INGEST_TOKEN`). Optional `GITHUB_DISPATCH_TOKEN` plus `vars.GITHUB_DISPATCH_REPO` for hourly refresh.
+4. `python3 scripts/sync_hugo_content.py`. Former static site: `python3 scripts/promote_to_service.py` then sync again.
+5. Build `hugo --source site --minify`, deploy `npx wrangler deploy`, `HUGO_VERSION=0.164.0`.
+6. Set `serving.service_url` and `base_url` to `https://<worker>.<subdomain>.workers.dev/`. Ingest: `SOURCE_WATCH_INGEST_TOKEN=… python3 scripts/build_seed_feed.py`. `--seed-only` requires `--allow-partial-ingest`.
+
+`GET /admin` is public chrome; APIs need `ADMIN_TOKEN`. Failed admin auths: 10 per IP per minute, then 429. Hide/exclude update the public feed immediately; include terms and seed additions apply on the next collect.
+
+Local Worker: `.dev.vars` with `ADMIN_TOKEN` / `INGEST_TOKEN`, Node 22+, `npx wrangler d1 migrations apply source-watch --local`, `npx wrangler dev --test-scheduled`, ingest against `http://localhost:8787/`.
+
+
 
 ## GitHub Pages
 
@@ -86,8 +108,9 @@ directory.
 
 ## Config
 
-- `config/watch.yaml` — instance identity: name, base URL, description, default tag, preferred chips, hidden tags, relevance rules, optional `discovered_after` (ISO date; drop live hits and ignore GitHub `created_at` before this), optional topic tiles. Chips, hidden tags, and name ship in `watch.json` for the client. `relevance` filters live collector hits (`always_match` short-circuits accept; `required_any` / `context_any` must appear in the GitHub description/topics, PR title/body, or Delving title/excerpt/tags).
+- `config/watch.yaml` — instance identity: name, base URL, description, default tag, preferred chips, hidden tags, relevance rules, optional `discovered_after` (ISO date; drop live hits and ignore GitHub `created_at` before this), optional topic tiles, optional `serving` (`mode: static|service`; `service_url` required in service mode). Chips, hidden tags, and name ship in `watch.json` for the client. `relevance` filters live collector hits (`always_match` short-circuits accept; `required_any` / `context_any` must appear in the GitHub description/topics, PR title/body, or Delving title/excerpt/tags).
 - `config/source-seeds.yaml` — seeded sources and live collectors. Pipeline input only; not read at request time.
+
 
 ## Tests
 

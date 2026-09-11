@@ -35,3 +35,6 @@ topics:
     blurb: Working notes on the overlap as send-to-silent-payment flows meet threshold signing.
     note: Four surfaces — DLEQ shares, hardware UX, epoch consistency, PSBT/group-config.
 discovered_after: ""  # ISO date; drop live hits and ignore GitHub created_at before this
+serving:
+  mode: static          # static | service
+  service_url: ""       # https://<worker>.<subdomain>.workers.dev/ — required when mode is service
