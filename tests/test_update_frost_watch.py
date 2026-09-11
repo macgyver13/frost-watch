@@ -21,7 +21,37 @@ spec.loader.exec_module(cast(ModuleType, update_frost_watch))
 
 
 class UpdateFrostWatchTests(unittest.TestCase):
-    def test_publish_syncs_with_origin_main_before_building(self) -> None:
+    def test_service_ingest_skips_git(self) -> None:
+        calls: list[list[str]] = []
+
+        def fake_run(cmd: list[str], *, env: dict[str, str] | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
+            calls.append(cmd)
+            return subprocess.CompletedProcess(cmd, 0, stdout="ingested\n")
+
+        with mock.patch.object(update_frost_watch, "ensure_venv", return_value=Path("/tmp/fake-python")):
+            with mock.patch.object(update_frost_watch, "load_serving", return_value=("service", "https://frost-watch.example.workers.dev/")):
+                with mock.patch.object(update_frost_watch, "ensure_ingest_token"):
+                    with mock.patch.object(update_frost_watch, "run", side_effect=fake_run):
+                        with mock.patch("sys.argv", ["update_frost_watch.py"]):
+                            rc = update_frost_watch.main()
+
+        self.assertEqual(rc, 0)
+        self.assertEqual(calls, [
+            ["/tmp/fake-python", "scripts/build_seed_feed.py"],
+            ["/tmp/fake-python", "scripts/verify_public_artifacts.py"],
+        ])
+        self.assertNotIn(["git", "fetch", "origin", "main"], calls)
+        self.assertNotIn(["git", "rebase", "origin/main"], calls)
+
+    def test_service_missing_url_exits(self) -> None:
+        with mock.patch.object(update_frost_watch, "ensure_venv", return_value=Path("/tmp/fake-python")):
+            with mock.patch.object(update_frost_watch, "load_serving", return_value=("service", "")):
+                with mock.patch("sys.argv", ["update_frost_watch.py"]):
+                    with self.assertRaises(SystemExit) as raised:
+                        update_frost_watch.main()
+        self.assertIn("service_url", str(raised.exception))
+
+    def test_static_publish_syncs_with_origin_main_before_building(self) -> None:
         calls: list[list[str]] = []
 
         def fake_run(cmd: list[str], *, env: dict[str, str] | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -37,10 +67,11 @@ class UpdateFrostWatchTests(unittest.TestCase):
             return subprocess.CompletedProcess(cmd, 0, stdout="")
 
         with mock.patch.object(update_frost_watch, "ensure_venv", return_value=Path("/tmp/fake-python")):
-            with mock.patch.object(update_frost_watch, "load_env_value", return_value="token"):
-                with mock.patch.object(update_frost_watch, "run", side_effect=fake_run):
-                    with mock.patch("sys.argv", ["update_frost_watch.py"]):
-                        rc = update_frost_watch.main()
+            with mock.patch.object(update_frost_watch, "load_serving", return_value=("static", "")):
+                with mock.patch.object(update_frost_watch, "load_env_value", return_value="token"):
+                    with mock.patch.object(update_frost_watch, "run", side_effect=fake_run):
+                        with mock.patch("sys.argv", ["update_frost_watch.py"]):
+                            rc = update_frost_watch.main()
 
         self.assertEqual(rc, 0)
         self.assertGreaterEqual(len(calls), 7)
@@ -48,7 +79,7 @@ class UpdateFrostWatchTests(unittest.TestCase):
         self.assertEqual(calls[1], ["git", "rebase", "origin/main"])
         self.assertEqual(calls[2], ["/tmp/fake-python", "scripts/build_seed_feed.py"])
 
-    def test_no_push_mode_skips_git_sync(self) -> None:
+    def test_static_no_push_mode_skips_git_sync(self) -> None:
         calls: list[list[str]] = []
 
         def fake_run(cmd: list[str], *, env: dict[str, str] | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -56,9 +87,10 @@ class UpdateFrostWatchTests(unittest.TestCase):
             return subprocess.CompletedProcess(cmd, 0, stdout="")
 
         with mock.patch.object(update_frost_watch, "ensure_venv", return_value=Path("/tmp/fake-python")):
-            with mock.patch.object(update_frost_watch, "run", side_effect=fake_run):
-                with mock.patch("sys.argv", ["update_frost_watch.py", "--no-push"]):
-                    rc = update_frost_watch.main()
+            with mock.patch.object(update_frost_watch, "load_serving", return_value=("static", "")):
+                with mock.patch.object(update_frost_watch, "run", side_effect=fake_run):
+                    with mock.patch("sys.argv", ["update_frost_watch.py", "--no-push"]):
+                        rc = update_frost_watch.main()
 
         self.assertEqual(rc, 0)
         self.assertEqual(calls[0], ["/tmp/fake-python", "scripts/build_seed_feed.py"])
