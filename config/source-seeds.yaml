@@ -1,9 +1,7 @@
 # Seeded sources and live collectors for this watch instance.
 # Identity (name, base_url, description, default_tag, chips, topics, relevance,
 # discovered_after) lives in config/watch.yaml. This file is only seeds + collectors.
-#
-# Leave these lists empty for a blank fork. Add entries, then run
-# scripts/build_seed_feed.py to fill site/static artifacts.
+# This file is for frost-watch only; do not merge to source-watch main.
 #
 # Optional per seed:
 #   discovered_at:  ISO timestamp; weeks use this. Live GitHub created_at
