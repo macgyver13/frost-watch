@@ -62,7 +62,7 @@ python3 scripts/verify_public_artifacts.py
 
 ## Refresh
 
-The Worker cron (`17 * * * *`) POSTs GitHub `workflow_dispatch` for `.github/workflows/refresh-feed.yml`. That workflow runs the collector and ingests; it commits nothing. If `GITHUB_DISPATCH_TOKEN` is empty, cron writes `refresh_skipped` and `/admin` shows `refresh not configured`.
+The Worker cron (`17 2 * * *`, 02:17 UTC daily) POSTs GitHub `workflow_dispatch` for `.github/workflows/refresh-feed.yml`. That workflow runs the collector and ingests; it commits nothing. `vars.REFRESH_CRON` must match that expression so leftover Cloudflare cadences are skipped. If `GITHUB_DISPATCH_TOKEN` is empty, cron writes `refresh_skipped` and `/admin` shows `refresh not configured`.
 
 Manual:
 

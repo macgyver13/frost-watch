@@ -36,6 +36,7 @@
   "vars": {
     "GITHUB_DISPATCH_REPO": "macgyver13/frost-watch",
     "GITHUB_DISPATCH_WORKFLOW": "refresh-feed.yml",
-    "GITHUB_DISPATCH_REF": "main"
+    "GITHUB_DISPATCH_REF": "main",
+    "REFRESH_CRON": "17 2 * * *"
   }
 }
